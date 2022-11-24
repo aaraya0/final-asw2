@@ -70,29 +70,17 @@ services:
       mode: replicated
       replicas: 2
 
-
-  frontend:
-    container_name: frontend
-    build: ./frontend
-    depends_on:
-      busqueda:
-        condition: service_started
-
-    ports:
-      - "3000:3000"
-
-
   lbbusqueda:
     build: ./lb
     depends_on:
-      busqueda:
+      search:
         condition: service_started
     ports:
       - "80:80"
   worker:
     build: ./worker
     depends_on:
-      busqueda:
+      search:
         condition: service_started
       lbbusqueda:
         condition: service_started
