@@ -1,7 +1,7 @@
 package dto
 
 type ItemDto struct {
-	ItemId      string `json:"id"`
+	ItemId      string `json:"_id"`
 	Titulo      string `json:"title"`
 	Ubicacion   string `json:"location"`
 	Vendedor    string `json:"seller"`

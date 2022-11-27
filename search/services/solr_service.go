@@ -36,7 +36,7 @@ func (s *SolrService) GetQuery(query string) (dto.ItemsDto, e.ApiError) {
 
 func (s *SolrService) Add(id string) e.ApiError {
 	var itemDto dto.ItemDto
-	resp, err := http.Get(fmt.Sprintf("http://%s:%d/items/%s", config.ITEMSHOST, config.ITEMSPORT, id))
+	resp, err := http.Get(fmt.Sprintf("http://%s:%d/item/%s", config.ITEMSHOST, config.ITEMSPORT, id))
 	if err != nil {
 		log.Debugf("error getting item %s", id)
 		return e.NewBadRequestApiError("error getting item " + id)
