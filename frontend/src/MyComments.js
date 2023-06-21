@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./estilos/Orders.css";
 import logo from "./images/logo.svg"
 import Cookies from "universal-cookie";
-import "./css/Home.css";
+import "./estilos/Home.css";
 import { ITEMSHOST, USERSHOST, MESSAGESHOST, ITEMSPORT, USERSPORT, MESSAGESPORT} from "./config/config";
 import Comment from "./Comment"
 import usersvg from "./images/user.svg"
