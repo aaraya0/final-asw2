@@ -1,4 +1,4 @@
-package dto
+package dtos
 
 type ResponseDto struct {
 	NumFound int      `json:"numFound"`
@@ -15,6 +15,14 @@ type DocDto struct {
 
 type AddDto struct {
 	Add DocDto `json:"add"`
+}
+
+type DeleteDoc struct {
+	Query string `json:"query"`
+}
+
+type DeleteDto struct {
+	Delete DeleteDoc `json:"delete"`
 }
 
 type SolrResponsesDto []SolrResponseDto

@@ -2,10 +2,10 @@ package repositories
 
 import (
 	"context"
+	e "final-asw2/services/users/utils/errors"
 	"fmt"
 	"log"
 	"time"
-	e "users/utils/errors"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )

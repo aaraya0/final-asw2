@@ -1,4 +1,4 @@
-package dto
+package dtos
 
 type ItemDto struct {
 	ItemId      string `json:"_id"`

@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	dto "github.com/aaraya0/arq-software/final-asw2/items/dtos"
-	"github.com/aaraya0/arq-software/final-asw2/items/utils/errors"
+	dto "final-asw2/items/dtos"
+	"final-asw2/items/utils/errors"
 )
 
 type Client interface {

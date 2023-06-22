@@ -1,4 +1,4 @@
-package dto
+package dtos
 
 type ItemDto struct {
 	ItemId      string `json:"_id"`
@@ -12,7 +12,6 @@ type ItemDto struct {
 	Imagen      string `json:"img_url"`
 }
 type ItemsDto []ItemDto
-package dto
 
 type MessageDto struct {
 	MessageId int    `json:"message_id"`

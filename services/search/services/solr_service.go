@@ -2,14 +2,14 @@ package services
 
 import (
 	"encoding/json"
+	dto "final-asw2/services/items/dtos"
+	"final-asw2/services/search/config"
+	client "final-asw2/services/search/services/repositories"
+	e "final-asw2/services/search/utils/errors"
 	"fmt"
 	"io"
 	"net/http"
 	"strings"
-	"wesolr/config"
-	"wesolr/dto"
-	client "wesolr/services/repositories"
-	e "wesolr/utils/errors"
 
 	log "github.com/sirupsen/logrus"
 )

@@ -1,10 +1,10 @@
 package services
 
 import (
+	"final-asw2/services/items_worker/config"
+	client "final-asw2/services/items_worker/services/repositories"
 	"fmt"
 	"net/http"
-	"worker/config"
-	client "worker/services/repositories"
 
 	log "github.com/sirupsen/logrus"
 )

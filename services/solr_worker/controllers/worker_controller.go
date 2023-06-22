@@ -1,10 +1,10 @@
-package worker
+package controllers
 
 import (
-	"worker/config"
-	"worker/services"
-	client "worker/services/repositories"
-	con "worker/utils/connections"
+	"final_asw2/services/solr_worker/config"
+	"final_asw2/services/solr_worker/services"
+	client "final_asw2/services/solr_worker/services/repositories"
+	con "final_asw2/services/solr_worker/utils/connections"
 )
 
 var (

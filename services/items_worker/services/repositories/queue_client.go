@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"worker/config"
-	e "worker/utils/errors"
+	"final-asw2/services/items_worker/config"
+	e "final-asw2/services/items_worker/utils/errors"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 	log "github.com/sirupsen/logrus"

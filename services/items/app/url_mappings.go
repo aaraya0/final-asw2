@@ -1,7 +1,7 @@
 package app
 
 import (
-	itemController "github.com/aaraya0/arq-software/final-asw2/items/controllers"
+	itemController "final-asw2/services/items/controllers"
 
 	log "github.com/sirupsen/logrus"
 )

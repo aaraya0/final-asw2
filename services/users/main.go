@@ -1,7 +1,7 @@
 package main
 
 import (
-	"users/app"
+	"final-asw2/services/users/app"
 )
 
 func main() {

@@ -1,10 +1,9 @@
 package messageController
 
 import (
-	"messages/config"
-	"messages/dto"
-	service "messages/services"
-	client "messages/services/repositories"
+	"final-asw2/services/messages/config"
+	service "final-asw2/services/messages/services"
+	client "final-asw2/services/messages/services/repositories"
 	"net/http"
 	"strconv"
 

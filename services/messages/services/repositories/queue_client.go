@@ -2,11 +2,12 @@ package repositories
 
 import (
 	"context"
+	e "final-asw2/services/messages/utils/errors"
 	"fmt"
-	amqp "github.com/rabbitmq/amqp091-go"
 	"log"
-	e "messages/utils/errors"
 	"time"
+
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func failOnError(err error, msg string) {

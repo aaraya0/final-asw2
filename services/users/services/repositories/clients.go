@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"users/model"
+	model "final-asw2/services/users/model"
 )
 
 type Client interface {

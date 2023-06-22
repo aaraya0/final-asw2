@@ -1,11 +1,11 @@
 package services
 
 import (
+	dto "final-asw2/services/messages/dtos"
+	"final-asw2/services/messages/model"
+	client "final-asw2/services/messages/services/repositories"
+	e "final-asw2/services/messages/utils/errors"
 	"fmt"
-	"messages/dto"
-	"messages/model"
-	client "messages/services/repositories"
-	e "messages/utils/errors"
 	"time"
 )
 

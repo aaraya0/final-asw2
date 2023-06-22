@@ -4,9 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	dto "github.com/aaraya0/arq-software/final-asw2/items/dtos"
-	"github.com/aaraya0/arq-software/final-asw2/items/model"
-	e "github.com/aaraya0/arq-software/final-asw2/items/utils/errors"
+	dto "final-asw2/items/dtos"
+	"final-asw2/items/model"
+	e "final-asw2/items/utils/errors"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"

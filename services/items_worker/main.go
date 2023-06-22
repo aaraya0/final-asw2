@@ -1,7 +1,7 @@
 package main
 
 import (
-	worker "worker/controllers/worker"
+	worker "final-asw2/services/items_worker/controllers"
 
 	log "github.com/sirupsen/logrus"
 )

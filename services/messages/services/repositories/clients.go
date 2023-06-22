@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"messages/model"
+	"final-asw2/services/messages/model"
 )
 
 type Client interface {

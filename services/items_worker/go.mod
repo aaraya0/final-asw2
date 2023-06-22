@@ -1,4 +1,4 @@
-module final-asw2/services/images_worker
+module final-asw2/services/items_worker
 
 go 1.18
 

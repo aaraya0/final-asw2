@@ -1,12 +1,13 @@
 package repositories
 
 import (
+	"final-asw2/services/messages/model"
+	e "final-asw2/services/messages/utils/errors"
 	"fmt"
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+
 	log "github.com/sirupsen/logrus"
-	"messages/model"
-	e "messages/utils/errors"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 type MessageClient struct {
@@ -14,7 +15,8 @@ type MessageClient struct {
 }
 
 func NewMessageInterface(DBUser string, DBPass string, DBHost string, DBPort int, DBName string) *MessageClient {
-	db, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort, DBName))
+
+	db, err := gorm.Open(mysql.Open(fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort, DBName)))
 	if err != nil {
 		panic(fmt.Sprintf("Error initializing SQL: %v", err))
 	}

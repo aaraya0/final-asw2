@@ -1,7 +1,7 @@
 package main
 
 import (
-	"messages/app"
+	"final-asw2/services/messages/app"
 )
 
 func main() {

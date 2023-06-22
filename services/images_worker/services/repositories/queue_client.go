@@ -1,9 +1,11 @@
 package repositories
 
 import (
-	"github.com/aaraya0/final-asw2/services/images_worker/config"
-	e "github.com/aaraya0/final-asw2/services/images_worker/utils/errors"
+	"final-asw2/services/images_worker/config"
+	e "final-asw2/services/images_worker/utils/errors"
+
 	amqp "github.com/rabbitmq/amqp091-go"
+
 	log "github.com/sirupsen/logrus"
 )
 

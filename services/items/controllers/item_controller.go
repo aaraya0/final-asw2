@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"items/config"
-	dtos "items/dtos"
-	service "items/services"
-	client "items/services/repositories"
+	"final-asw2/services/items/config"
+	dtos "final-asw2/services/items/dtos"
+	service "final-asw2/services/items/services"
+	client "final-asw2/services/items/services/repositories"
 
 	"github.com/gin-gonic/gin"
 )

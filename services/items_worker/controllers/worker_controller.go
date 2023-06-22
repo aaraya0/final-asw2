@@ -1,10 +1,10 @@
-package worker
+package controllers
 
 import (
-	"worker/config"
-	"worker/services"
-	client "worker/services/repositories"
-	con "worker/utils/connections"
+	"final-asw2/services/items_worker/config"
+	"final-asw2/services/items_worker/services"
+	client "final-asw2/services/items_worker/services/repositories"
+	con "final-asw2/services/items_worker/utils/connections"
 )
 
 var (

@@ -6,7 +6,8 @@ import (
 	"log"
 	"time"
 
-	e "github.com/aaraya0/arq-software/final-asw2/items/utils/errors"
+	e "final-asw2/items/utils/errors"
+
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 

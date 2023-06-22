@@ -1,9 +1,9 @@
 package services
 
 import (
-	dto "dtos"
-	client "services/repositories"
-	e "utils/errors"
+	dto "final-asw2/services/items/dtos"
+	client "final-asw2/services/items/services/repositories"
+	e "final-asw2/services/items/utils/errors"
 
 	log "github.com/sirupsen/logrus"
 )

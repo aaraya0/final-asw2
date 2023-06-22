@@ -1,12 +1,12 @@
-package solrController
+package controllers
 
 import (
+	dto "final-asw2/services/items/dtos"
+	"final-asw2/services/search/config"
+	"final-asw2/services/search/services"
+	client "final-asw2/services/search/services/repositories"
+	con "final-asw2/services/search/utils/connections"
 	"net/http"
-	"wesolr/config"
-	"wesolr/dto"
-	"wesolr/services"
-	client "wesolr/services/repositories"
-	con "wesolr/utils/connections"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
