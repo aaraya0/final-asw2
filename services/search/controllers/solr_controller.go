@@ -2,12 +2,12 @@ package solrController
 
 import (
 	"net/http"
+	"wesolr/config"
+	"wesolr/dto"
+	"wesolr/services"
+	client "wesolr/services/repositories"
+	con "wesolr/utils/connections"
 
-	"github.com/aaraya0/arq-software/final-asw2/search/config"
-	dto "github.com/aaraya0/arq-software/final-asw2/search/dtos"
-	"github.com/aaraya0/arq-software/final-asw2/search/services"
-	client "github.com/aaraya0/arq-software/final-asw2/search/services/repositories"
-	con "github.com/aaraya0/arq-software/final-asw2/search/utils/connections"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 )
@@ -33,13 +33,38 @@ func GetQuery(c *gin.Context) {
 
 }
 
-func Add(c *gin.Context) {
+func GetQueryAllFields(c *gin.Context) {
+	var itemsDto dto.ItemsDto
+	query := c.Param("searchQuery")
+
+	itemsDto, err := Solr.GetQueryAllFields(query)
+	if err != nil {
+		log.Debug(itemsDto)
+		c.JSON(http.StatusBadRequest, itemsDto)
+		return
+	}
+
+	c.JSON(http.StatusOK, itemsDto)
+
+}
+
+func AddFromId(c *gin.Context) {
 	id := c.Param("id")
-	err := Solr.Add(id)
+	err := Solr.AddFromId(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, err)
 		return
 	}
 
+	c.JSON(http.StatusCreated, err)
+}
+
+func Delete(c *gin.Context) {
+	id := c.Param("id")
+	err := Solr.Delete(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err)
+		return
+	}
 	c.JSON(http.StatusCreated, err)
 }

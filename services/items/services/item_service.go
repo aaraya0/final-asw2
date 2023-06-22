@@ -1,9 +1,10 @@
 package services
 
 import (
-	dto "github.com/aaraya0/arq-software/final-asw2/items/dtos"
-	client "github.com/aaraya0/arq-software/final-asw2/items/services/repositories"
-	e "github.com/aaraya0/arq-software/final-asw2/items/utils/errors"
+	dto "dtos"
+	client "services/repositories"
+	e "utils/errors"
+
 	log "github.com/sirupsen/logrus"
 )
 

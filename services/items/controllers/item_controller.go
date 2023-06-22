@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/aaraya0/arq-software/final-asw2/items/config"
-	dtos "github.com/aaraya0/arq-software/final-asw2/items/dtos"
-	service "github.com/aaraya0/arq-software/final-asw2/items/services"
-	client "github.com/aaraya0/arq-software/final-asw2/items/services/repositories"
+	"items/config"
+	dtos "items/dtos"
+	service "items/services"
+	client "items/services/repositories"
+
 	"github.com/gin-gonic/gin"
 )
 
