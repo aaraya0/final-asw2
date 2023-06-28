@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"final-asw2/services/images_worker/config"
-	client "final-asw2/services/images_worker/services/repositories"
+	"github.com/aaraya0/final-asw2/services/images_worker/config"
+	client "github.com/aaraya0/final-asw2/services/images_worker/services/repositories"
 
 	log "github.com/sirupsen/logrus"
 )

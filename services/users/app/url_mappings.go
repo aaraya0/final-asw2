@@ -1,7 +1,7 @@
 package app
 
 import (
-	userController "final-asw2/services/users/controllers/user"
+	userController "github.com/aaraya0/final-asw2/services/users/controllers"
 
 	log "github.com/sirupsen/logrus"
 )

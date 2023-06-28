@@ -1,11 +1,13 @@
 package messageController
 
 import (
-	"final-asw2/services/messages/config"
-	service "final-asw2/services/messages/services"
-	client "final-asw2/services/messages/services/repositories"
 	"net/http"
 	"strconv"
+
+	"github.com/aaraya0/arq-software/final-asw2/services/items/dto"
+	"github.com/aaraya0/final-asw2/services/messages/config"
+	service "github.com/aaraya0/final-asw2/services/messages/services"
+	client "github.com/aaraya0/final-asw2/services/messages/services/repositories"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"

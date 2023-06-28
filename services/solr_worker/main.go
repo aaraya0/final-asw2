@@ -1,7 +1,7 @@
 package main
 
 import (
-	worker "final-asw2/services/solr_worker/controllers"
+	worker "github.com/aaraya0/final-asw2/services/solr_worker/controllers"
 
 	log "github.com/sirupsen/logrus"
 )

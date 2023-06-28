@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"final-asw2/services/items/config"
-	dtos "final-asw2/services/items/dtos"
-	service "final-asw2/services/items/services"
-	client "final-asw2/services/items/services/repositories"
+	"github.com/aaraya0/final-asw2/services/items/config"
+	dtos "github.com/aaraya0/final-asw2/services/items/dtos"
+	service "github.com/aaraya0/final-asw2/services/items/services"
+	client "github.com/aaraya0/final-asw2/services/items/services/repositories"
 
 	"github.com/gin-gonic/gin"
 )

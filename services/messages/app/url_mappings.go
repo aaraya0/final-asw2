@@ -1,7 +1,7 @@
 package app
 
 import (
-	messageController "final-asw2/services/messages/controllers"
+	messageController "github.com/aaraya0/final-asw2/services/messages/controllers"
 
 	log "github.com/sirupsen/logrus"
 )

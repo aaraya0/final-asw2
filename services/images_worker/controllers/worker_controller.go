@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"final-asw2/services/images_worker/config"
-	"final-asw2/services/images_worker/services"
-	client "final-asw2/services/images_worker/services/repositories"
-	con "final-asw2/services/images_worker/utils/connections"
+	"github.com/aaraya0/final-asw2/services/images_worker/config"
+	"github.com/aaraya0/final-asw2/services/images_worker/services"
+	client "github.com/aaraya0/final-asw2/services/images_worker/services/repositories"
+	con "github.com/aaraya0/final-asw2/services/images_worker/utils/connections"
 )
 
 var (

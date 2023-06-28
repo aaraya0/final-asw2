@@ -1,8 +1,8 @@
 package services
 
 import (
-	dto "final-asw2/services/messages/dtos"
-	e "final-asw2/services/messages/utils/errors"
+	dto "github.com/aaraya0/final-asw2/services/messages/dtos"
+	e "github.com/aaraya0/final-asw2/services/messages/utils/errors"
 )
 
 type MessageService interface {

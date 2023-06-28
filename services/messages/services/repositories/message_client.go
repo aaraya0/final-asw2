@@ -1,9 +1,10 @@
 package repositories
 
 import (
-	"final-asw2/services/messages/model"
-	e "final-asw2/services/messages/utils/errors"
 	"fmt"
+
+	"github.com/aaraya0/final-asw2/services/messages/model"
+	e "github.com/aaraya0/final-asw2/services/messages/utils/errors"
 
 	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"

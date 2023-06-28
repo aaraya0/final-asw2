@@ -1,4 +1,4 @@
-module final-asw2/services/images_worker
+module github.com/aaraya0/final-asw2/services/images_worker
 
 go 1.18
 

@@ -1,12 +1,13 @@
 package services
 
 import (
-	dto "final-asw2/services/messages/dtos"
-	"final-asw2/services/messages/model"
-	client "final-asw2/services/messages/services/repositories"
-	e "final-asw2/services/messages/utils/errors"
 	"fmt"
 	"time"
+
+	dto "github.com/aaraya0/final-asw2/services/messages/dtos"
+	"github.com/aaraya0/final-asw2/services/messages/model"
+	client "github.com/aaraya0/final-asw2/services/messages/services/repositories"
+	e "github.com/aaraya0/final-asw2/services/messages/utils/errors"
 )
 
 type MessageServiceImpl struct {

@@ -1,8 +1,8 @@
 package services
 
 import (
-	client "admin/services/repositories"
-	e "admin/utils/errors"
+	client "github.com/aaraya0/final-asw2/admin/services/repositories"
+	e "github.com/aaraya0/final-asw2/admin/utils/errors"
 )
 
 type DockerServiceImpl struct {

@@ -3,11 +3,12 @@ package controllers
 import (
 	"net/http"
 	"strconv"
-	"users/dto"
-	service "users/services"
-	client "users/services/repositories"
 
-	"users/config"
+	dto "github.com/aaraya0/final-asw2/services/users/dtos"
+	service "github.com/aaraya0/final-asw2/services/users/services"
+	client "github.com/aaraya0/final-asw2/services/users/services/repositories"
+
+	"github.com/aaraya0/final-asw2/services/users/config"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"

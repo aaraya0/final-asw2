@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"final_asw2/services/solr_worker/config"
-	"final_asw2/services/solr_worker/services"
-	client "final_asw2/services/solr_worker/services/repositories"
-	con "final_asw2/services/solr_worker/utils/connections"
+	"github.com/aaraya0/final-asw2/services/solr_worker/config"
+	"github.com/aaraya0/final-asw2/services/solr_worker/services"
+	client "github.com/aaraya0/final-asw2/services/solr_worker/services/repositories"
+	con "github.com/aaraya0/final-asw2/services/solr_worker/utils/connections"
 )
 
 var (

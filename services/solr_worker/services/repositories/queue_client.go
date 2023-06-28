@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"final_asw2/services/solr_worker/config"
-	e "final_asw2/services/solr_worker/utils/errors"
+	"github.com/aaraya0/final-asw2/services/solr_worker/config"
+	e "github.com/aaraya0/final-asw2/services/solr_worker/utils/errors"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 	log "github.com/sirupsen/logrus"

@@ -1,11 +1,12 @@
 package services
 
 import (
-	"final-asw2/services/users/model"
-	client "final-asw2/services/users/services/repositories"
-	e "final-asw2/services/users/utils/errors"
 	"fmt"
-	"users/dto"
+
+	dto "github.com/aaraya0/final-asw2/services/users/dtos"
+	"github.com/aaraya0/final-asw2/services/users/model"
+	client "github.com/aaraya0/final-asw2/services/users/services/repositories"
+	e "github.com/aaraya0/final-asw2/services/users/utils/errors"
 
 	"github.com/golang-jwt/jwt"
 

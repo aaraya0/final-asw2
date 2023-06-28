@@ -1,7 +1,7 @@
 package app
 
 import (
-	solrController "final-asw2/services/search/controllers"
+	solrController "github.com/aaraya0/final-asw2/services/search/controllers"
 
 	log "github.com/sirupsen/logrus"
 )

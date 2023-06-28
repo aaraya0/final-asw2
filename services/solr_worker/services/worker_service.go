@@ -1,11 +1,12 @@
 package services
 
 import (
-	"final_asw2/services/solr_worker/config"
-	client "final_asw2/services/solr_worker/services/repositories"
 	"fmt"
 	"net/http"
 	"strings"
+
+	"github.com/aaraya0/final-asw2/services/solr_worker/config"
+	client "github.com/aaraya0/final-asw2/services/solr_worker/services/repositories"
 
 	log "github.com/sirupsen/logrus"
 )

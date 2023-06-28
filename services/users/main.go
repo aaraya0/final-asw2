@@ -1,7 +1,7 @@
 package main
 
 import (
-	"final-asw2/services/users/app"
+	"github.com/aaraya0/final-asw2/services/users/app"
 )
 
 func main() {

@@ -1,7 +1,8 @@
 package app
 
 import (
-	dockerController "admin/controllers"
+	dockerController "github.com/aaraya0/final-asw2/admin/controllers"
+
 	log "github.com/sirupsen/logrus"
 )
 

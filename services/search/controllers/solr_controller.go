@@ -1,12 +1,13 @@
 package controllers
 
 import (
-	dto "final-asw2/services/items/dtos"
-	"final-asw2/services/search/config"
-	"final-asw2/services/search/services"
-	client "final-asw2/services/search/services/repositories"
-	con "final-asw2/services/search/utils/connections"
 	"net/http"
+
+	dto "github.com/aaraya0/final-asw2/services/items/dtos"
+	"github.com/aaraya0/final-asw2/services/search/config"
+	"github.com/aaraya0/final-asw2/services/search/services"
+	client "github.com/aaraya0/final-asw2/services/search/services/repositories"
+	con "github.com/aaraya0/final-asw2/services/search/utils/connections"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"

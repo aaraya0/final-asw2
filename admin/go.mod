@@ -1,4 +1,4 @@
-module final-asw2/admin
+module github.com/aaraya0/final-asw2/admin
 
 go 1.18
 

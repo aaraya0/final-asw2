@@ -48,7 +48,7 @@ services:
       - solr-precreate
       - items
   items:
-    build: ./items
+    build: ./services/items
     depends_on:
       mongo:
         condition: service_started
@@ -60,7 +60,7 @@ services:
       - "8090:8090"
 
   search:
-    build: ./search
+    build: ./services/search
     depends_on:
       solr:
         condition: service_started
@@ -71,14 +71,28 @@ services:
       replicas: 2
 
   lbbusqueda:
-    build: ./lb
+    build: ./configs/lb
     depends_on:
       search:
         condition: service_started
     ports:
       - "80:80"
-  worker:
-    build: ./worker
+  images_worker:
+    build: ./services/images_worker
+    depends_on:
+      search:
+        condition: service_started
+      lbbusqueda:
+        condition: service_started
+  items_worker:
+      build: ./services/items_worker
+      depends_on:
+        search:
+          condition: service_started
+        lbbusqueda:
+          condition: service_started
+  solr_worker:
+    build: ./services/solr_worker
     depends_on:
       search:
         condition: service_started

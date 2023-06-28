@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"fmt"
-	"users/model"
+	"final_asw2/services/users/model"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"

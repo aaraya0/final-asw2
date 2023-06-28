@@ -1,4 +1,4 @@
-module final-asw2/services/search
+module github.com/aaraya0/final-asw2/services/search
 
 go 1.18
 

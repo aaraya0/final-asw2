@@ -1,11 +1,13 @@
 package controllers
 
 import (
-	"admin/services"
-	client "admin/services/repositories"
+	"net/http"
+
+	"github.com/aaraya0/final-asw2/admin/services"
+	client "github.com/aaraya0/final-asw2/admin/services/repositories"
+
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
-	"net/http"
 )
 
 var (

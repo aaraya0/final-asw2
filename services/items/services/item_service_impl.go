@@ -1,8 +1,8 @@
 package services
 
 import (
-	dtos "final-asw2/services/items/dtos"
-	e "final-asw2/services/items/utils/errors"
+	dtos "github.com/aaraya0/final-asw2/services/items/dtos"
+	e "github.com/aaraya0/final-asw2/services/items/utils/errors"
 )
 
 type ItemService interface {

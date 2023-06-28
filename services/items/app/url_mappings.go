@@ -1,7 +1,7 @@
 package app
 
 import (
-	itemController "final-asw2/services/items/controllers"
+	itemController "github.com/aaraya0/final-asw2/services/items/controllers"
 
 	log "github.com/sirupsen/logrus"
 )
