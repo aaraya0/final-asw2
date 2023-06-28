@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	dto "items/dtos"
-	errors "items/utils/errors"
+	dto "github.com/aaraya0/final-asw2/services/items/dtos"
+	errors "github.com/aaraya0/final-asw2/services/items/utils/errors"
 )
 
 type Client interface {

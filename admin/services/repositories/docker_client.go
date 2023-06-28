@@ -3,6 +3,7 @@ package repositories
 import (
 	"context"
 	"fmt"
+
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
@@ -73,8 +74,7 @@ func (cli *DockerClient) ListContainer() error {
 }
 
 func (cli *DockerClient) StopContainer(containerID string) error {
-
-	err := cli.Docker.ContainerStop(context.Background(), containerID, nil)
+	err := cli.Docker.ContainerStop(context.Background(), containerID, container.StopOptions{})
 	if err != nil {
 		panic(err)
 	}

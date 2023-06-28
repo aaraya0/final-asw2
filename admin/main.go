@@ -3,9 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
+	"time"
+
 	v1 "github.com/opencontainers/image-spec/specs-go/v1"
 	log "github.com/sirupsen/logrus"
-	"time"
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
@@ -25,7 +26,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Print the health and run status of each cont
+	// Print the health and run status of each container
 	for _, cont := range containers {
 		health, err := cli.ContainerInspect(context.Background(), cont.ID)
 		if err != nil {
@@ -46,18 +47,18 @@ func main() {
 		}
 	}
 
-	// Check if the "items" cont is running
+	// Check if the "items" container is running
 	itemsRunning := false
 	for _, cont := range containers {
-		if cont.Names[0] == "items" {
+		if cont.Names[0] == "/items" {
 			itemsRunning = true
 			break
 		}
 	}
 
-	// If the "items" cont is not running, start it
+	// If the "items" container is not running, start it
 	if !itemsRunning {
-		fmt.Println("Starting the items cont...")
+		fmt.Println("Starting the items container...")
 
 		resp, err := cli.ContainerCreate(context.Background(), &container.Config{
 			Image: "asw2-parcial2-items",
@@ -79,31 +80,31 @@ func main() {
 			log.Fatal(err)
 		}
 
-		fmt.Println("The items cont has been started.")
+		fmt.Println("The items container has been started.")
 	}
 
-	// Stop the "items" cont after 5 seconds
+	// Stop the "items" container after 5 seconds
 	time.Sleep(5 * time.Second)
 
 	for _, cont := range containers {
-		if cont.Names[0] == "items" {
-			if err := cli.ContainerStop(context.Background(), cont.ID, nil); err != nil {
+		if cont.Names[0] == "/items" {
+			if err := cli.ContainerStop(context.Background(), cont.ID, container.StopOptions{}); err != nil {
 				log.Fatal(err)
 			}
 
-			fmt.Println("The items cont has been stopped.")
+			fmt.Println("The items container has been stopped.")
 			break
 		}
 	}
 
-	// Remove the "items" cont
+	// Remove the "items" container
 	for _, cont := range containers {
-		if cont.Names[0] == "items" {
+		if cont.Names[0] == "/items" {
 			if err := cli.ContainerRemove(context.Background(), cont.ID, types.ContainerRemoveOptions{}); err != nil {
 				log.Fatal(err)
 			}
 
-			fmt.Println("The items cont has been removed.")
+			fmt.Println("The items container has been removed.")
 			break
 		}
 	}

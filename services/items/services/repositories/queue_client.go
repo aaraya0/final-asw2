@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	e "items/utils/errors"
+	e "github.com/aaraya0/final-asw2/services/items/utils/errors"
 
 	amqp "github.com/rabbitmq/amqp091-go"
 )

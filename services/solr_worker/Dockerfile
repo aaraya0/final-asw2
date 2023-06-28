@@ -1,10 +1,11 @@
 FROM golang:1.18
 
-ADD . /solr_worker
+ADD . /items
 
-WORKDIR /solr_worker
+WORKDIR /items
+RUN go mod init worker
 RUN go mod tidy
-RUN go build -o solr_worker .
-RUN chmod +x /solr_worker
+RUN go build -o worker .
+RUN chmod +x /items
 
-ENTRYPOINT ["/solr_worker/solr_worker"]
+ENTRYPOINT ["/items/worker"]

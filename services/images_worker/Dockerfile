@@ -1,10 +1,11 @@
 FROM golang:1.18
 
-ADD . /images_worker
+ADD . /items
 
-WORKDIR /images_worker
+WORKDIR /items
+RUN go mod init worker
 RUN go mod tidy
-RUN go build -o images_worker .
-RUN chmod +x /images_worker
+RUN go build -o worker .
+RUN chmod +x /items
 
-ENTRYPOINT ["/images_worker/images_worker"]
+ENTRYPOINT ["/items/worker"]

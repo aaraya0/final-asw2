@@ -3,8 +3,8 @@ package controllers
 import (
 	"net/http"
 
-	dto "github.com/aaraya0/final-asw2/services/items/dtos"
 	"github.com/aaraya0/final-asw2/services/search/config"
+	dto "github.com/aaraya0/final-asw2/services/search/dtos"
 	"github.com/aaraya0/final-asw2/services/search/services"
 	client "github.com/aaraya0/final-asw2/services/search/services/repositories"
 	con "github.com/aaraya0/final-asw2/services/search/utils/connections"

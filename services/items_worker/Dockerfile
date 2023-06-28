@@ -1,10 +1,11 @@
 FROM golang:1.18
 
-ADD . /items_worker
+ADD . /items
 
-WORKDIR /items_worker
+WORKDIR /items
+RUN go mod init worker
 RUN go mod tidy
-RUN go build -o items_worker .
-RUN chmod +x /items_worker
+RUN go build -o worker .
+RUN chmod +x /items
 
-ENTRYPOINT ["/items_worker/items_worker"]
+ENTRYPOINT ["/items/worker"]

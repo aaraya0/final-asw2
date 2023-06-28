@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strings"
 
-	dto "github.com/aaraya0/final-asw2/services/items/dtos"
 	"github.com/aaraya0/final-asw2/services/search/config"
+	dto "github.com/aaraya0/final-asw2/services/search/dtos"
 	client "github.com/aaraya0/final-asw2/services/search/services/repositories"
 	e "github.com/aaraya0/final-asw2/services/search/utils/errors"
 

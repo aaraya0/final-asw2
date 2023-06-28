@@ -1,12 +1,12 @@
 package repositories
 
 import (
-	"fmt"
 	"final_asw2/services/users/model"
+	"fmt"
 
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	log "github.com/sirupsen/logrus"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 type UserClient struct {
@@ -14,7 +14,7 @@ type UserClient struct {
 }
 
 func NewUserInterface(DBUser string, DBPass string, DBHost string, DBPort int, DBName string) *UserClient {
-	db, err := gorm.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort, DBName))
+	db, err := gorm.Open(mysql.Open(fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort, DBName)))
 	if err != nil {
 		panic(fmt.Sprintf("Error initializing SQL: %v", err))
 	}

@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/aaraya0/arq-software/final-asw2/services/items/dto"
 	"github.com/aaraya0/final-asw2/services/messages/config"
+	dto "github.com/aaraya0/final-asw2/services/messages/dtos"
 	service "github.com/aaraya0/final-asw2/services/messages/services"
 	client "github.com/aaraya0/final-asw2/services/messages/services/repositories"
 

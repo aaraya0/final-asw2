@@ -3,9 +3,8 @@ package repositories
 import (
 	"fmt"
 
-	dto "items/dtos"
-	e "items/utils/errors"
-
+	dto "github.com/aaraya0/final-asw2/services/items/dtos"
+	e "github.com/aaraya0/final-asw2/services/items/utils/errors"
 	"github.com/bradfitz/gomemcache/memcache"
 	json "github.com/json-iterator/go"
 )

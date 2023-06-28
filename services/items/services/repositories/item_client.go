@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	dto "items/dtos"
-	"items/model"
-	e "items/utils/errors"
+	dto "github.com/aaraya0/final-asw2/services/items/dtos"
+	"github.com/aaraya0/final-asw2/services/items/model"
+	e "github.com/aaraya0/final-asw2/services/items/utils/errors"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
