@@ -58,7 +58,10 @@ services:
         condition: service_healthy
     ports:
       - "8090:8090"
-
+  admin:
+    build: ./admin
+    ports:
+      - "8000:8000"
   search:
     build: ./services/search
     depends_on:

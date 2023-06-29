@@ -7,8 +7,10 @@ import (
 )
 
 func mapUrls() {
-	// Mapeo productos
-	router.POST("/container/:image", dockerController.CreateContainer)
+
+	router.POST("/container/:image/:name", dockerController.CreateContainer)
+	router.DELETE("/container/:containerID", dockerController.RemoveContainer)
+	router.GET("/containers", dockerController.ListContainers)
 
 	log.Info("Finishing mapping configurations")
 }

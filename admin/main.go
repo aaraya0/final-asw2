@@ -1,7 +1,7 @@
 package main
 
 import (
-	"context"
+	/*"context"
 	"fmt"
 	"time"
 
@@ -11,17 +11,20 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
-	"github.com/docker/go-connections/nat"
+	"github.com/docker/go-connections/nat"*/
+	"github.com/aaraya0/final-asw2/admin/app"
 )
 
 func main() {
-	cli, err := client.NewClientWithOpts(client.FromEnv)
+	/*cli, err := client.NewClientWithOpts(client.FromEnv)
 	if err != nil {
 		panic(err)
-	}
+	}*/
+
+	app.StartRoute()
 
 	// List all containers on the Compose network
-	containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{})
+	/*containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -107,5 +110,5 @@ func main() {
 			fmt.Println("The items container has been removed.")
 			break
 		}
-	}
+	}*/
 }

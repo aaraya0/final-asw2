@@ -24,3 +24,20 @@ func (s *DockerServiceImpl) CreateContainer(image string, name string) (string, 
 	}
 	return id, nil
 }
+
+func (s *DockerServiceImpl) RemoveContainer(containerID string) e.ApiError {
+	err := s.docker.RemoveContainer(containerID)
+	if err != nil {
+		return e.NewInternalServerApiError("Error removing container", err)
+	}
+	return nil
+}
+
+func (s *DockerServiceImpl) ListContainers() ([]client.Container, error) {
+	containers, err := s.docker.ListContainers()
+	if err != nil {
+		return nil, err
+	}
+
+	return containers, nil
+}

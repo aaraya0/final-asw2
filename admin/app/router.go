@@ -20,7 +20,7 @@ func StartRoute() {
 
 	log.Info("Starting server")
 
-	err := router.Run(":8000")
+	err := router.Run(":8070")
 	if err != nil {
 		log.Error("Error starting router", err)
 	}
