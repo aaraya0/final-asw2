@@ -93,6 +93,7 @@ func (sc *SolrClient) Add(itemDto dto.ItemDto) e.ApiError {
 	return nil
 }
 
+/*
 func (sc *SolrClient) Delete(id string) e.ApiError {
 	var deleteDto dto.DeleteDto
 	deleteDto.Delete = dto.DeleteDoc{Query: fmt.Sprintf("id:%s", id)}
@@ -114,3 +115,4 @@ func (sc *SolrClient) Delete(id string) e.ApiError {
 	}
 	return nil
 }
+*/
