@@ -1,8 +1,9 @@
 package repositories
 
 import (
-	"final_asw2/services/users/model"
 	"fmt"
+
+	"github.com/aaraya0/final-asw2/services/users/model"
 
 	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"

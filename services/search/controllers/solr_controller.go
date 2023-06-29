@@ -5,7 +5,7 @@ import (
 
 	"github.com/aaraya0/final-asw2/services/search/config"
 	dto "github.com/aaraya0/final-asw2/services/search/dtos"
-	service "github.com/aaraya0/final-asw2/services/search/services"
+	"github.com/aaraya0/final-asw2/services/search/services"
 	client "github.com/aaraya0/final-asw2/services/search/services/repositories"
 	con "github.com/aaraya0/final-asw2/services/search/utils/connections"
 
@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	Solr = service.NewSolrServiceImpl(
+	Solr = services.NewSolrServiceImpl(
 		(*client.SolrClient)(con.NewSolrClient(config.SOLRHOST, config.SOLRPORT, config.SOLRCOLLECTION)),
 	)
 )
@@ -60,7 +60,6 @@ func AddFromId(c *gin.Context) {
 	c.JSON(http.StatusCreated, err)
 }
 
-/*
 func Delete(c *gin.Context) {
 	id := c.Param("id")
 	err := Solr.Delete(id)
@@ -70,4 +69,3 @@ func Delete(c *gin.Context) {
 	}
 	c.JSON(http.StatusCreated, err)
 }
-*/

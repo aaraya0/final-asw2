@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	model "final-asw2/services/users/model"
+	"github.com/aaraya0/final-asw2/services/users/model"
 )
 
 type Client interface {

@@ -21,9 +21,8 @@ type DeleteDoc struct {
 	Query string `json:"query"`
 }
 
-/*
 type DeleteDto struct {
 	Delete DeleteDoc `json:"delete"`
-}*/
+}
 
 type SolrResponsesDto []SolrResponseDto
