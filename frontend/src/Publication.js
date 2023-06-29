@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import "./estilos/Orders.css";
+import "./styles/Orders.css";
 import logo from "./images/logo.png"
 import usersvg from "./images/user.svg"
 import Cookies from "universal-cookie";
-import "./estilos/Item.css";
+import "./styles/Item.css";
 import PublicationForm from "./PublicationForm";
 import { HOST, PORT, ITEMSHOST, USERSHOST, MESSAGESHOST, ITEMSPORT, USERSPORT, MESSAGESPORT} from "./config/config";
 

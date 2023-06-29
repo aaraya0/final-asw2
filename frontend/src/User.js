@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./estilos/User.css";
+import "./styles/User.css";
 import logo from "./images/logo.png"
 import cart from "./images/cart.svg"
 import loadinggif from "./images/loading.gif"

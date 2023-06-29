@@ -20,8 +20,9 @@
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
-    background: #01d28e;
-    border: 1px solid #01d28e;
+    background: #4d311b;
+    border: 1px solid #4d311b;
+    border-radius:10px;
     color: #fff;
     padding: 10px 20px;
     
@@ -35,10 +36,12 @@
     display: flex;
     justify-content: center;
   }
-  
+
+
   .login-form {
-    background-color: grey;
+    background-color: rgb(230, 150, 0);
     padding: 2rem;
+    border-radius:10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   

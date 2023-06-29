@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./estilos/Login.css";
+import "./styles/Login.css";
 import Cookies from "universal-cookie";
 import logo from "./images/logo.png"
 import {HOST, PORT, USERSHOST, USERSPORT} from "./config/config";
@@ -70,16 +70,16 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Usuario </label>
-          <input type="text" name="uname" placeholder="Usuario" required />
+          <input type="text" name="uname" required />
         </div>
         <div className="input-container">
           <label>Contraseña</label>
-          <input type="password" name="pass" placeholder="Contraseña" required />
+          <input type="password" name="pass" required />
         </div>
 
           {renderErrorMessage("default")}
         <div className="button-container">
-          <input type="submit" />
+          <input type="submit" value="Ingresar" />
         </div>
       </form>
     </div>
@@ -96,26 +96,17 @@ function Login() {
 
   return (
     <div>
-    <div className="home">
-      <div className="topnavHOME">
-        <div>
-          <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
+    <div className="app">
+      <div className="divv">
+        <div className="imagenLogin">
+          <img src={logo} width="340px" height="340px" id="logo" />
+        </div>
+        <div className="login-form">
+          <div className="title">BIENVENIDOS</div>
+            {Cookie.get("user_id") > -1 ? Cookie.get("username") : renderForm}
         </div>
       </div>
-    </div>
 
-    <div id="mySidenav" className="sidenav" >
-      {logreg}
-      <a id="sistema" onClick={()=>goto("/sistema")}>Sistema</a>
-      <a id="publications" onClick={()=>goto("/publications")}>Publicaciones</a>
-      <a id="mycomments" onClick={()=>goto("/mycomments")}>Mis Comentarios</a>
-    </div>
-
-    <div className="app">
-      <div className="login-form">
-        <div className="title">BIENVENIDOS</div>
-        {Cookie.get("user_id") > -1 ? Cookie.get("username") : renderForm}
-      </div>
     </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./estilos/Item.css";
+import "./styles/Item.css";
 
 
 const PublicationForm = ({

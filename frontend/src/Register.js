@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./estilos/Register.css";
+import "./styles/Register.css";
 import Cookies from "universal-cookie";
 import logo from "./images/logo.png";
 import usersvg from "./images/user.svg";
@@ -82,33 +82,33 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Usuario </label>
-          <input type="text" name="uname" placeholder="Usuario" required />
+          <input type="text" name="uname"  required />
         </div>
         <div className="input-container">
           <label>Contraseña</label>
-          <input type="password" name="pass" placeholder="Contraseña" required />
+          <input type="password" name="pass" required />
         </div>
         <div className="input-container">
           <label>Confirmar Contraseña</label>
-          <input type="password" name="cpass" placeholder="Repetir Contraseña" required />
+          <input type="password" name="cpass" required />
         </div>
 
           {renderErrorMessage("default")}
 
         <div className="input-container">
-          <label>Nombre</label>
-          <input type="text" name="first_name" placeholder="Nombre" required />
+          <label>Nombre(s)</label>
+          <input type="text" name="first_name" required />
         </div>
         <div className="input-container">
-          <label>Apellido</label>
-          <input type="text" name="last_name" placeholder="Apellido" required />
+          <label>Apellido(s)</label>
+          <input type="text" name="last_name" required />
         </div>
         <div className="input-container">
           <label>Email</label>
-          <input type="email" name="email" placeholder="EMAIL@HOST.COM" required />
+          <input type="email" name="email" required />
         </div>
         <div className="button-container">
-          <input type="submit"/>
+          <input type="submit" value="Guardar Datos"/>
         </div>
       </form>
     </div>
@@ -140,7 +140,7 @@ function Register() {
 
     <div className="app">
       <div className="login-form">
-        <div className="title">CREAR UN USUARIO</div>
+        <div className="title">Crear Usuario</div>
 
         {isSubmitted || Cookie.get("user_id") > -1 ? Cookie.get("username") : renderForm}
       </div>

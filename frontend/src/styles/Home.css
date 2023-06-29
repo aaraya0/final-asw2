@@ -15,7 +15,6 @@
   .topnavHOME span {
     display: inline-block;
     padding-top: 5px;
-    float: right;
   }
   
   .topnavHOME p{
@@ -55,7 +54,6 @@
     border: none;
     margin-top: 16px;
     font-size: 22px;
-    float: left;
     margin-left: 15%;
     width: 33%;
   }
@@ -241,7 +239,7 @@
   }
   
   #logout {
-    .transition: .5s;
+    transition: background-color 0.5s;
     cursor: pointer;
     color: white;
     min-width: 200px;
@@ -271,7 +269,6 @@
     max-width: 150px;
     background-color: #d2a92c;
     font-weight: bold;
-    vertical-align: baseline;
   }
   
   .categoryFilter .delete{
@@ -382,7 +379,6 @@
   
   .comentario-eliminar {
     display: inline-block;
-    float: right;
   }
   
   .comentario-donde {
