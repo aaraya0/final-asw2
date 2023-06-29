@@ -392,3 +392,7 @@
     margin-left: 10px;
     border-top: 2px solid green;
   }
+  .loading{
+    width: 50px;
+    height: auto;
+ }

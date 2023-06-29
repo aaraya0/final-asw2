@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./estilos/Orders.css";
-import logo from "./images/logo.svg"
+import logo from "./images/logo.png"
 import Cookies from "universal-cookie";
 import "./estilos/Home.css";
 import { ITEMSHOST, USERSHOST, MESSAGESHOST, ITEMSPORT, USERSPORT, MESSAGESPORT} from "./config/config";
@@ -161,7 +161,7 @@ function MyComments() {
     return (
         <div className="comments">
             <div className="topnavHOME">
-                <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> TuCasa.com </p>
+                <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
                 {isLogged ? login : <a id="login" onClick={()=>goto("/login")}>Login</a>}
             </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./estilos/Register.css";
 import Cookies from "universal-cookie";
-import logo from "./images/logo.svg";
+import logo from "./images/logo.png";
 import usersvg from "./images/user.svg";
 import {HOST, PORT, USERSHOST,USERSPORT} from "./config/config";
 
@@ -126,7 +126,7 @@ function Register() {
     <div className="home">
       <div className="topnavHOME">
         <div>
-          <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> TuCasa.com </p>
+          <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
         </div>
       </div>
     </div>

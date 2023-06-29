@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from "react";
 import "./estilos/Home.css";
-import logo from "./images/logo.svg"
+import logo from "./images/logo.png"
 import loadinggif from "./images/loading.gif"
 import Cookies from "universal-cookie";
 import usersvg from "./images/user.svg"
@@ -240,7 +240,7 @@ function Home() {
     <div className="home">
       <div className="topnavHOME">
         <div>
-          <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> TuCasa.com </p>
+          <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
         </div>
 
         <div>

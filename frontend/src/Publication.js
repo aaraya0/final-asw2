@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./estilos/Orders.css";
-import logo from "./images/logo.svg"
+import logo from "./images/logo.png"
 import usersvg from "./images/user.svg"
 import Cookies from "universal-cookie";
 import "./estilos/Item.css";
@@ -206,7 +206,7 @@ function Item() {
     return (
         <div className="items">
             <div className="topnavHOME">
-                <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> TuCasa.com </p>
+                <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
                 {isLogged ? login : <a id="login" onClick={()=>goto("/login")}>Login</a>}
             </div>
 

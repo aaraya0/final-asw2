@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from "react";
 import "./estilos/Item.css";
-import logo from "./images/logo.svg"
+import logo from "./images/logo.png"
 import loadinggif from "./images/loading.gif"
 import Cookies from "universal-cookie";
 import { HOST, PORT, ITEMSHOST, USERSHOST, MESSAGESHOST, ITEMSPORT, USERSPORT, MESSAGESPORT} from "./config/config";
@@ -128,7 +128,7 @@ function Item() {
     <div className="home">
         <div className="topnavHOME">
             <div>
-                <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> TuCasa.com </p>
+                <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
             </div>
         </div>
 
