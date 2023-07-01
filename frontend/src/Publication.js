@@ -186,8 +186,7 @@ function Item() {
 
     const error = (
         <div>
-            <div> BOO ERROR :(((( </div>
-            <div> There's no items yet :D </div>
+            <div> No hay publicaciones cargadas todavia </div>
         </div>
     )
 
@@ -208,13 +207,6 @@ function Item() {
             <div className="topnavHOME">
                 <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
                 {isLogged ? login : <a id="login" onClick={()=>goto("/login")}>Login</a>}
-            </div>
-
-            <div id="mySidenav" className="sidenav" >
-                {isLogged ? loggedout : logreg}
-                <a id="sistema" onClick={()=>goto("/sistema")}>Sistema</a>
-                <a id="publications" className="clicked" onClick={()=>goto("/publications")}>Publicaciones</a>
-                <a id="mycomments" onClick={()=>goto("/mycomments")}>Mis Comentarios</a>
             </div>
 
             <div id="main">

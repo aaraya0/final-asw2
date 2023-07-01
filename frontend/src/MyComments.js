@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import "./styles/Orders.css";
+import "./styles/Items.css";
 import logo from "./images/logo.png"
 import Cookies from "universal-cookie";
-import "./styles/Home.css";
+
 import { ITEMSHOST, USERSHOST, MESSAGESHOST, ITEMSPORT, USERSPORT, MESSAGESPORT} from "./config/config";
 import Comment from "./Comment"
 import usersvg from "./images/user.svg"
@@ -133,8 +133,7 @@ function MyComments() {
     }, [userComments.length])
     const error = (
         <div>
-            <div> BOO ERROR :(((( </div>
-            <div> There's no comments yet :D </div>
+            <div> No hay comentarios todavia </div>
         </div>
     )
 
@@ -163,13 +162,6 @@ function MyComments() {
             <div className="topnavHOME">
                 <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
                 {isLogged ? login : <a id="login" onClick={()=>goto("/login")}>Login</a>}
-            </div>
-
-            <div id="mySidenav" className="sidenav" >
-                {isLogged ? loggedout : logreg}
-                <a id="sistema" onClick={() => goto("/sistema")}>Sistema</a>
-                <a id="publications" onClick={() => goto("/publications")}>Publicaciones</a>
-                <a id="mycomments" className="clicked" onClick={() => goto("/mycomments")}>Mis Comentarios</a>
             </div>
 
             <div id="main">

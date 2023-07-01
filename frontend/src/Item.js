@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from "react";
-import "./styles/Item.css";
+import "./styles/Items.css";
 import logo from "./images/logo.png"
 import loadinggif from "./images/loading.gif"
 import Cookies from "universal-cookie";
