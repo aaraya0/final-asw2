@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from "react";
 import "./styles/Home.css";
 import logo from "./images/logo.png"
-import loadinggif from "./images/loading.gif"
+import loadinggif from "./images/loadinglindo.gif"
 import Cookies from "universal-cookie";
 import usersvg from "./images/user.svg"
 import {HOST, PORT, USERSHOST,USERSPORT} from "./config/config";
@@ -226,7 +226,7 @@ function Home() {
   const logreg = (
       <div>
         <a id="login" onClick={()=>goto("/login")}>Login</a>
-        <a id="register" onClick={()=>goto("/register")}>Register</a>
+        <a id="register" onClick={()=>goto("/register")}>Registro</a>
       </div>
 )
 
@@ -247,7 +247,7 @@ function Home() {
         
           
         
-          <input type="text" id="search" placeholder="Search..." onKeyDown={(e) => e.key === "Enter" ? searchAllDelete(e) : void(0)} onKeyUp={
+          <input type="text" id="search" placeholder="Buscar..." onKeyDown={(e) => e.key === "Enter" ? searchAllDelete(e) : void(0)} onKeyUp={
             (e)=>{
               setQuery(e.target.value)
               if(e.target.value == ""){

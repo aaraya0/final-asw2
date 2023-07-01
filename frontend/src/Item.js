@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from "react";
 import "./styles/Items.css";
 import logo from "./images/logo.png"
-import loadinggif from "./images/loading.gif"
+import loadinggif from "./images/loadinglindo.gif"
 import Cookies from "universal-cookie";
 import { HOST, PORT, ITEMSHOST, USERSHOST, MESSAGESHOST, ITEMSPORT, USERSPORT, MESSAGESPORT} from "./config/config";
 import Comments from "./Comments";

@@ -119,7 +119,7 @@ function showItems(items) {
                 <a className="seller">{parseField(item.vendedor)}</a>
             </div>
             <div className="right">
-                <a className="sqmts">Mts2: {parseField(item.mts2)}</a>
+                <a className="sqmts">Mts&sup2: {parseField(item.mts2)}</a>
                 <a className="rooms"> - Ambientes: {parseField(item.ambientes)}</a>
                 <a className="bedrooms"> - Dormitorios: {parseField(item.dormitorios)}</a>
                 <a className="bathrooms"> - Baños: {parseField(item.banos)}</a>
@@ -186,7 +186,7 @@ function Item() {
 
     const error = (
         <div>
-            <div> No hay publicaciones cargadas todavia </div>
+            <div> Todavia no hay publicaciones</div>
         </div>
     )
 
@@ -214,8 +214,8 @@ function Item() {
 
                 <div className="comments">
                     <h3 className="comments-title">Nueva Publicación</h3>
-                    <div className="comment-form-title">JSON Here</div>
-                    <PublicationForm submitLabel="Write" handleSubmit={addItem} />
+                    <div className="comment-form-title">Inserte el JSON</div>
+                    <PublicationForm submitLabel="Publicar" handleSubmit={addItem} />
                 </div>
 
                 {userItems.length > 0 ? showItems(userItems) : error}

@@ -120,9 +120,11 @@ function MyComments() {
     }
 
     const login = (
+        <div className="logincomment">
         <span>
             <img src={usersvg} onClick={()=>goto("/user")} id="user" width="48px" height="48px"/>
         </span>
+        </div>
     )
 
     useEffect(() => {
@@ -133,7 +135,7 @@ function MyComments() {
     }, [userComments.length])
     const error = (
         <div>
-            <div> No hay comentarios todavia </div>
+            <div className="sincomments"> Todavia no hay comentarios </div>
         </div>
     )
 

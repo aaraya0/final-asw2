@@ -21,7 +21,7 @@ const PublicationForm = ({
       <textarea className="comment-form-textarea" value={text} onChange={(e) => setText(e.target.value)}/>
       <button className="comment-form-button" disabled={isTextareaDisabled}> {submitLabel}</button>
       {hasCancelButton && (
-      <button type="button" className="comment-form-button comment-form-cancel-button" onClick={handleCancel}>Cancel</button>
+      <button type="button" className="comment-form-button comment-form-cancel-button" onClick={handleCancel}>Cancelar</button>
       )}
     </form>
   );

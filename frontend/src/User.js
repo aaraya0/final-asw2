@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles/User.css";
 import logo from "./images/logo.png"
 import cart from "./images/cart.svg"
-import loadinggif from "./images/loading.gif"
+import loadinggif from "./images/loadinglindo.gif"
 import usersvg from "./images/user.svg"
 import Cookies from "universal-cookie";
 import { USERSHOST, PORT, USERSPORT } from "./config/config";

@@ -79,7 +79,7 @@
    position: fixed; /* Stay in place */
    z-index: 1; /* Stay on top */
    left: 0;
-   background-color: #090909; /* Black*/
+   background-color: rgb(230, 150, 0); /* Black*/
    overflow-x: hidden; /* Disable horizontal scroll */
    padding-top: 60px; /* Place content 60px from the top */
   }
@@ -89,8 +89,8 @@
    padding: 8px 8px 8px 10px;
    cursor: pointer;
    text-decoration: none;
-   font-size: 25px;
-   color: #818181;
+   font-size: 20px;
+   color: #000000;
    display: block;
    transition: 0.3s;
   }

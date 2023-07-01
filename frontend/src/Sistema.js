@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from "react";
 import "./styles/Home.css";
 import logo from "./images/logo.png"
-import loadinggif from "./images/loading.gif"
+import loadinggif from "./images/loadinglindo.gif"
 import Cookies from "universal-cookie";
 import usersvg from "./images/user.svg";
 import {HOST, USERSHOST, PORT, USERSPORT} from "./config/config";
