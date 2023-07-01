@@ -47,13 +47,13 @@
 
   }
 
-  .login-form {
+  .login-form{
     background-color: rgb(216, 144, 0);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2rem;
     box-shadow: 0 4px 8px 0 rgba(57, 55, 55, 0.2), 0 6px 20px 0 rgba(95, 59, 13, 0.19);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+    width: fit-content;
   }
   
   .list-container {
@@ -76,6 +76,8 @@
   
   .input-container {
     display: flex;
+    align-items: center;
+    text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     flex-direction: column;
     gap: 8px;

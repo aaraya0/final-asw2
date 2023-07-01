@@ -81,30 +81,30 @@ function Register() {
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <label>Usuario </label>
+          <label>Usuario: </label>
           <input type="text" name="uname"  required />
         </div>
         <div className="input-container">
-          <label>Contraseña</label>
+          <label>Contraseña: </label>
           <input type="password" name="pass" required />
         </div>
         <div className="input-container">
-          <label>Confirmar Contraseña</label>
+          <label>Confirmar Contraseña: </label>
           <input type="password" name="cpass" required />
         </div>
 
           {renderErrorMessage("default")}
 
         <div className="input-container">
-          <label>Nombre(s)</label>
+          <label>Nombre(s): </label>
           <input type="text" name="first_name" required />
         </div>
         <div className="input-container">
-          <label>Apellido(s)</label>
+          <label>Apellido(s): </label>
           <input type="text" name="last_name" required />
         </div>
         <div className="input-container">
-          <label>Email</label>
+          <label>Email: </label>
           <input type="email" name="email" required />
         </div>
         <div className="button-container">
