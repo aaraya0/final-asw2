@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "./styles/Items.css";
+import "./styles/comments.css";
 import logo from "./images/logo.png"
 import Cookies from "universal-cookie";
 
@@ -163,9 +163,7 @@ function MyComments() {
         <div className="comments">
             <div className="topnavHOME">
                 <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
-                {isLogged ? login : <a id="login" onClick={()=>goto("/login")}>Login</a>}
             </div>
-
             <div id="main">
                 {userComments.length > 0 ? showComments(userComments, titles) : error}
             </div>

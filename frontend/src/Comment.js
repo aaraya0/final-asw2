@@ -1,5 +1,5 @@
 import CommentForm from "./CommentForm";
-import "./styles/Items.css";
+import "./styles/comments.css";
 
 const Comment = ({
   comment,

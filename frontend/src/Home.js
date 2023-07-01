@@ -244,9 +244,6 @@ function Home() {
         </div>
 
         <div>
-        
-          
-        
           <input type="text" id="search" placeholder="Buscar..." onKeyDown={(e) => e.key === "Enter" ? searchAllDelete(e) : void(0)} onKeyUp={
             (e)=>{
               setQuery(e.target.value)
@@ -256,7 +253,6 @@ function Home() {
                 setQuerying(true)
                 }
               }}/>
-              {isLogged ? login : <a id="login" onClick={()=>goto("/login")}>Login</a>}
           {querying ? options : void(0)}
         </div>
       </div>

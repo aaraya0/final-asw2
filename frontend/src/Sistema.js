@@ -171,7 +171,6 @@ async function searchQuery(field, query){
         <div className="topnavHOME">
             <div>
                 <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
-                {isLogged ? login : <a id="login" onClick={()=>goto("/login")}>Login</a>}
             </div>
         </div>
 

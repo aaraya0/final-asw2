@@ -5,7 +5,7 @@ import {
   getComments as getCommentsApi,
   createComment as createCommentApi,
 } from "./CommentBD";
-import "./styles/Items.css";
+import "./styles/comments.css";
 
 const Comments = ({ uid, item, isLogged}) => {
   const [backendComments, setBackendComments] = useState([]);
