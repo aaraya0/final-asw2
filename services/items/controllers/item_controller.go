@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	itemService = service.NewItemServiceImpl(
+	itemService = service.NewItemService(
 		client.NewItemInterface(config.MONGOHOST, config.MONGOPORT, config.MONGOCOLLECTION),
 		client.NewMemcachedInterface(config.MEMCACHEDHOST, config.MEMCACHEDPORT),
 		client.NewQueueClient(config.RABBITUSER, config.RABBITPASSWORD, config.RABBITHOST, config.RABBITPORT),

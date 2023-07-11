@@ -13,23 +13,24 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type UserServiceImpl struct {
+type UserService struct {
 	userDB *client.UserClient
 	queue  *client.QueueClient
 }
 
-func NewUserServiceImpl(
+func NewUserService(
 	userDB *client.UserClient,
 	queue *client.QueueClient,
-) *UserServiceImpl {
+
+) *UserService {
 	userDB.StartDbEngine()
-	return &UserServiceImpl{
+	return &UserService{
 		userDB: userDB,
 		queue:  queue,
 	}
 }
 
-func (s *UserServiceImpl) GetUserById(id int) (dto.UserDto, e.ApiError) {
+func (s *UserService) GetUserById(id int) (dto.UserDto, e.ApiError) {
 
 	var user = s.userDB.GetUserById(id)
 	var userDto dto.UserDto
@@ -45,7 +46,7 @@ func (s *UserServiceImpl) GetUserById(id int) (dto.UserDto, e.ApiError) {
 	return userDto, nil
 }
 
-func (s *UserServiceImpl) GetUsers() (dto.UsersDto, e.ApiError) {
+func (s *UserService) GetUsers() (dto.UsersDto, e.ApiError) {
 
 	var users = s.userDB.GetUsers()
 	var usersDto dto.UsersDto
@@ -64,7 +65,7 @@ func (s *UserServiceImpl) GetUsers() (dto.UsersDto, e.ApiError) {
 	return usersDto, nil
 }
 
-func (s *UserServiceImpl) InsertUser(userDto dto.UserDto) (dto.UserDto, e.ApiError) {
+func (s *UserService) InsertUser(userDto dto.UserDto) (dto.UserDto, e.ApiError) {
 
 	var user model.User
 
@@ -85,10 +86,10 @@ func (s *UserServiceImpl) InsertUser(userDto dto.UserDto) (dto.UserDto, e.ApiErr
 	return userDto, nil
 }
 
-func (s *UserServiceImpl) Login(loginDto dto.LoginDto) (dto.LoginResponseDto, e.ApiError) {
+func (s *UserService) Login(loginDto dto.LoginDto) (dto.LoginResponseDto, e.ApiError) {
 
 	var user model.User
-	user, err := s.userDB.GetUserByUsername(loginDto.Username)
+	user, err := s.userDB.GetUserByUname(loginDto.Username)
 	var loginResponseDto dto.LoginResponseDto
 	loginResponseDto.UserId = -1
 	if err != nil {
@@ -114,7 +115,7 @@ func (s *UserServiceImpl) Login(loginDto dto.LoginDto) (dto.LoginResponseDto, e.
 	return loginResponseDto, nil
 }
 
-func (s *UserServiceImpl) DeleteUser(id int) e.ApiError {
+func (s *UserService) DeleteUser(id int) e.ApiError {
 
 	err := s.queue.SendMessage(id, "delete", fmt.Sprintf("%d", id))
 	if err != nil {

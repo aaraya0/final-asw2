@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	userService = service.NewUserServiceImpl(
+	userService = service.NewUserService(
 		client.NewUserInterface(config.SQLUSER, config.SQLPASS, config.SQLHOST, config.SQLPORT, config.SQLDB),
 		client.NewQueueClient(config.RABBITUSER, config.RABBITPASSWORD, config.RABBITHOST, config.RABBITPORT),
 	)
@@ -23,8 +23,6 @@ var (
 
 func GetUserById(c *gin.Context) {
 	log.Debug("User id: " + c.Param("id"))
-
-	// Get Back User
 
 	var userDto dto.UserDto
 	id, _ := strconv.Atoi(c.Param("id"))
@@ -49,7 +47,7 @@ func GetUsers(c *gin.Context) {
 	c.JSON(http.StatusOK, usersDto)
 }
 
-func UserInsert(c *gin.Context) {
+func InsertUser(c *gin.Context) {
 	var userDto dto.UserDto
 	err := c.BindJSON(&userDto)
 

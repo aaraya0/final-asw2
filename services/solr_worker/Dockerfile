@@ -1,11 +1,11 @@
 FROM golang:1.18
 
-ADD . /search
+ADD . /solr_worker
 
-WORKDIR /search
+WORKDIR /solr_worker
 RUN go mod init github.com/aaraya0/final-asw2/services/solr_worker
 RUN go mod tidy
-RUN go build -o worker .
-RUN chmod +x /search
+RUN go build -o solr_worker .
+RUN chmod +x /solr_worker
 
-ENTRYPOINT ["/search/worker"]
+ENTRYPOINT ["/solr_worker/solr_worker"]

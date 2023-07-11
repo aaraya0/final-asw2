@@ -15,19 +15,45 @@ type UserClient struct {
 }
 
 func NewUserInterface(DBUser string, DBPass string, DBHost string, DBPort int, DBName string) *UserClient {
-	db, err := gorm.Open(mysql.Open(fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort, DBName)))
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort)
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(fmt.Sprintf("Error initializing SQL: %v", err))
 	}
+	err = createDatabaseAndSchema(db, DBName)
+	if err != nil {
+		panic(fmt.Sprintf("Error creating db: %v", err))
+	}
+
 	return &UserClient{
 		Db: db,
 	}
-}
-func (s *UserClient) StartDbEngine() {
-	// We need to migrate all classes model.
-	s.Db.AutoMigrate(&model.User{})
 
-	log.Info("Finishing Migration Database Tables")
+}
+func (s *UserClient) StartDbEngine() error {
+	err := s.Db.AutoMigrate(&model.User{})
+	if err != nil {
+		return fmt.Errorf("error migrating database tables: %w", err)
+	}
+
+	log.Info("Finished migrating database tables")
+	return nil
+}
+
+func createDatabaseAndSchema(db *gorm.DB, dbName string) error {
+	// Create the database
+	err := db.Exec(fmt.Sprintf("CREATE DATABASE IF NOT EXISTS `%s` CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", dbName)).Error
+	if err != nil {
+		return fmt.Errorf("error creating database: %w", err)
+	}
+
+	// Switch to the created database
+	err = db.Exec(fmt.Sprintf("USE `%s`", dbName)).Error
+	if err != nil {
+		return fmt.Errorf("error switching to database: %w", err)
+	}
+
+	return nil
 }
 
 func (s *UserClient) GetUserById(id int) model.User {
@@ -38,7 +64,7 @@ func (s *UserClient) GetUserById(id int) model.User {
 	return user
 }
 
-func (s *UserClient) GetUserByUsername(username string) (model.User, error) {
+func (s *UserClient) GetUserByUname(username string) (model.User, error) {
 	var user model.User
 	result := s.Db.Where("username = ?", username).First(&user)
 	if result.Error != nil {

@@ -30,7 +30,7 @@ func NewItemInterface(host string, port int, collection string) *ItemClient {
 
 	names, err := client.ListDatabaseNames(context.TODO(), bson.M{})
 	if err != nil {
-		panic(fmt.Sprintf("Error initializing MongoDB: %v", err))
+		panic(fmt.Sprintf("Error getting dbs from MongoDB: %v", err))
 	}
 
 	fmt.Println("[MongoDB] Initialized connection")

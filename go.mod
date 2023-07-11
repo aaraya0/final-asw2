@@ -1,10 +1,10 @@
 module github.com/aaraya0/final-asw2
 
-go 1.18
+go 1.20
 
 require (
 	github.com/bradfitz/gomemcache v0.0.0-20230611145640-acc696258285
-	github.com/docker/docker v24.0.2+incompatible
+	github.com/docker/docker v24.0.4+incompatible
 	github.com/docker/go-connections v0.4.0
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-gonic/gin v1.9.1
@@ -13,10 +13,9 @@ require (
 	github.com/opencontainers/image-spec v1.0.2
 	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/sirupsen/logrus v1.9.3
-	github.com/stevenferrer/solr-go v0.3.3
 	go.mongodb.org/mongo-driver v1.12.0
 	gorm.io/driver/mysql v1.5.1
-	gorm.io/gorm v1.25.1
+	gorm.io/gorm v1.25.2
 )
 
 require (
@@ -34,6 +33,7 @@ require (
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
+	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
@@ -65,5 +65,5 @@ require (
 	golang.org/x/tools v0.6.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gotest.tools/v3 v3.4.0 // indirect
+	gotest.tools/v3 v3.5.0 // indirect
 )

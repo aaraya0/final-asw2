@@ -56,35 +56,23 @@ services:
     ports:
       - "8090:8090"
 
+ 
+
   admin:
     build: ./admin
     ports:
       - "8000:8000"
-
-  search:
-    build: ./services/search
-    depends_on:
-      - solr
-      - items
-    deploy:
-      mode: replicated
-      replicas: 2
-
   lbbusqueda:
     build: ./configs/lb
-    depends_on:
-      - search
     ports:
       - "80:80"
 
   items_worker:
     build: ./services/items_worker
     depends_on:
-      - search
       - lbbusqueda
 
   solr_worker:
     build: ./services/solr_worker
     depends_on:
-      - search
       - lbbusqueda

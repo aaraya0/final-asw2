@@ -5,7 +5,7 @@ import (
 	e "github.com/aaraya0/final-asw2/services/users/utils/errors"
 )
 
-type MessageService interface {
+type UserServices interface {
 	GetUserById(id int) (dto.UserDto, e.ApiError)
 	GetUsers() (dto.UsersDto, e.ApiError)
 	DeleteUser(id int) e.ApiError
