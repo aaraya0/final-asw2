@@ -10,4 +10,5 @@ type Client interface {
 	DeleteUser(id int) error
 	GetUserByUsername(username string) (model.User, error)
 	InsertUser(user model.User) model.User
+	UpdateUser(id int) (model.User, error)
 }

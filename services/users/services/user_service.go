@@ -11,4 +11,5 @@ type UserServices interface {
 	DeleteUser(id int) e.ApiError
 	InsertUser(userDto dto.UserDto) (dto.UserDto, e.ApiError)
 	Login(loginDto dto.LoginDto) (dto.LoginResponseDto, e.ApiError)
+	UpdateUser(id int, userDto dto.UserDto) (dto.UserDto, e.ApiError)
 }

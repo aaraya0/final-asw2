@@ -99,3 +99,11 @@ func (s *UserClient) DeleteUser(user model.User) error {
 	result := s.Db.Delete(&user)
 	return result.Error
 }
+
+func (s *UserClient) UpdateUser(user model.User) (model.User, error) {
+	result := s.Db.Save(&user)
+	if result.Error != nil {
+		return model.User{}, result.Error
+	}
+	return user, nil
+}

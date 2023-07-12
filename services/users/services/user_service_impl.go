@@ -131,3 +131,34 @@ func (s *UserService) DeleteUser(id int) e.ApiError {
 
 	return nil
 }
+
+func (s *UserService) UpdateUser(id int, userDto dto.UserDto) (dto.UserDto, e.ApiError) {
+	// Obtener el usuario existente por su ID
+	user := s.userDB.GetUserById(id)
+
+	// Actualizar los campos del usuario con los valores proporcionados en userDto
+	user.FirstName = userDto.FirstName
+	user.LastName = userDto.LastName
+	user.Username = userDto.Username
+	user.Email = userDto.Email
+
+	// Guardar los cambios en la base de datos
+	updatedUser, err := s.userDB.UpdateUser(user)
+	if err != nil {
+		return dto.UserDto{}, e.NewInternalServerApiError("Error updating user", err)
+	}
+
+	// Crear y devolver el UserDto actualizado
+	updatedUserDto := dto.UserDto{
+		UserId:    updatedUser.ID,
+		FirstName: updatedUser.FirstName,
+		LastName:  updatedUser.LastName,
+		Username:  updatedUser.Username,
+		Email:     updatedUser.Email,
+	}
+	er := s.queue.SendMessage(userDto.UserId, "update", fmt.Sprintf("%d", userDto.UserId))
+	if er != nil {
+		return userDto, e.NewInternalServerApiError("error sending created message on user update", er)
+	}
+	return updatedUserDto, nil
+}
