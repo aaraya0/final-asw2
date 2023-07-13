@@ -1,6 +1,7 @@
 version: '2'
 
 services:
+ 
   mongo:
     image: mongo
     restart: always
@@ -55,9 +56,6 @@ services:
       - rabbit
     ports:
       - "8090:8090"
-
- 
-
   admin:
     build: ./admin
     ports:
@@ -76,3 +74,4 @@ services:
     build: ./services/solr_worker
     depends_on:
       - lbbusqueda
+

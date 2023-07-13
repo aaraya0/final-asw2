@@ -1,10 +1,14 @@
 package services
 
 import (
+	"fmt"
+	"net/http"
+
+	"github.com/aaraya0/final-asw2/services/items/config"
 	dto "github.com/aaraya0/final-asw2/services/items/dtos"
 	client "github.com/aaraya0/final-asw2/services/items/services/repositories"
 	e "github.com/aaraya0/final-asw2/services/items/utils/errors"
-
+	json "github.com/json-iterator/go"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -89,4 +93,100 @@ func (s *ItemService) QueueItems(itemsDto dto.ItemsDto) e.ApiError {
 		}()
 	}
 	return nil
+}
+func (s *ItemService) DeleteUserItems(id int) e.ApiError {
+	items, err := s.GetItemsByUId(id)
+	if err != nil {
+		log.Error(err)
+		return err
+	}
+	for i := range items {
+		var item dto.ItemDto
+		item = items[i]
+		go func() {
+			err := s.item.DeleteItem(item.ItemId)
+			if err != nil {
+				log.Error(err)
+			}
+			err = s.queue.SendMessage(item.ItemId, "delete")
+			log.Error(err)
+		}()
+	}
+	return nil
+}
+
+func (s *ItemService) DeleteItem(id string) e.ApiError {
+
+	err := s.item.DeleteItem(id)
+	if err != nil {
+		log.Error(err)
+		return err
+	}
+
+	err = s.memcached.Delete(id)
+	if err != nil {
+		log.Error("Error deleting from cache", err)
+	}
+	err = s.queue.SendMessage("items", fmt.Sprintf("Delete item, item id: "+id))
+	log.Error(err)
+
+	return nil
+}
+
+func (s *ItemService) GetItemsByUId(id int) (dto.ItemsDto, e.ApiError) {
+
+	var itemsDto dto.ItemsDto
+
+	var itemsRespDto dto.ItemsDto
+
+	itemsDto, err := s.item.GetItemsByUId(id)
+	if err != nil {
+		log.Debug("Error getting items from mongo")
+		return itemsDto, err
+	}
+
+	for i := range itemsDto {
+		item, err := s.GetUserById(itemsDto[i].UsuarioId, itemsDto[i])
+		if err != nil {
+			return itemsDto, e.NewBadRequestApiError("error getting user for item")
+		}
+		itemsDto[i].Usuario = item.Usuario
+		itemsDto[i].UNombre = item.UNombre
+		itemsDto[i].UApellido = item.UApellido
+		itemsDto[i].UEmail = item.UEmail
+		itemsRespDto = append(itemsRespDto, itemsDto[i])
+	}
+
+	return itemsRespDto, nil
+}
+
+func (s *ItemService) GetUserById(id int, itemDto dto.ItemDto) (dto.ItemDto, e.ApiError) {
+	var userDto dto.UserDto
+	var itemRDto dto.ItemDto
+
+	var er e.ApiError
+	er = nil
+
+	userDto, err := s.memcached.GetUserById(id)
+	if err != nil {
+		resp, err := http.Get(fmt.Sprintf("http://%s:%d/%s/%d", config.USERSHOST, config.USERSPORT, config.USERSENDPOINT, id))
+		if err != nil {
+			return itemRDto, e.NewInternalServerApiError("Error getting user from user service", err)
+		}
+		err = json.NewDecoder(resp.Body).Decode(&userDto)
+		if err != nil {
+			return itemRDto, e.NewInternalServerApiError("Error decoding userDto", err)
+		}
+
+		userDto, err = s.memcached.InsertUser(userDto)
+		if err != nil {
+			er = e.NewInternalServerApiError("Error inserting user to memcached", err)
+		}
+	}
+
+	itemRDto.Usuario = userDto.Username
+	itemRDto.UNombre = userDto.FirstName
+	itemRDto.UApellido = userDto.LastName
+	itemRDto.UEmail = userDto.Email
+	return itemRDto, er
 }

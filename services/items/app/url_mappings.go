@@ -11,6 +11,10 @@ func mapUrls() {
 	router.GET("/items/:item_id", itemController.GetItem)
 	router.POST("/item", itemController.InsertItem)
 	router.POST("/items", itemController.QueueItems)
+	router.DELETE("/item/:item_id", itemController.DeleteItem)
+
+	router.DELETE("/users/:id/items", itemController.DeleteUserItems)
+	router.GET("/users/:id/items", itemController.GetItemsByUId)
 
 	log.Info("Finishing mappings configurations")
 }

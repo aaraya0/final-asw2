@@ -14,5 +14,6 @@ type Item struct {
 	Mts2        int                `bson:"mts2"`
 	Precio      int                `bson:"price"`
 	Imagen      string             `bson:"img_url"`
+	UsuarioId   int                `bson:"usuario_id"`
 }
 type Items []Item

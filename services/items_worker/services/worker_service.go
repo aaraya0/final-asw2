@@ -26,7 +26,7 @@ func (s *WorkerService) TopicWorker(topic string) {
 	err := s.queue.ProcessMessages(config.EXCHANGE, topic, func(id string) {
 		client := &http.Client{}
 		req, err := http.NewRequest("DELETE", fmt.Sprintf("http://%s:%d/users/%s/items", config.ITEMSHOST, config.ITEMSPORT, id), nil)
-		log.Debug("Item delete sent " + id)
+		log.Debug("User delete sent user id: " + id)
 
 		if err != nil {
 			log.Debug("error in delete request")

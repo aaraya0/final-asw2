@@ -8,6 +8,7 @@ import (
 	"github.com/aaraya0/final-asw2/services/items/model"
 	e "github.com/aaraya0/final-asw2/services/items/utils/errors"
 
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -68,6 +69,7 @@ func (s *ItemClient) GetItem(id string) (dto.ItemDto, e.ApiError) {
 		Imagen:      item.Imagen,
 		Precio:      item.Precio,
 		Clase:       item.Clase,
+		UsuarioId:   item.UsuarioId,
 	}, nil
 
 }
@@ -79,16 +81,76 @@ func (s *ItemClient) InsertItem(item dto.ItemDto) (dto.ItemDto, e.ApiError) {
 		Ubicacion:   item.Ubicacion,
 		Vendedor:    item.Vendedor,
 		Descripcion: item.Descripcion,
-		Mts2:        item.Mts2,
-		Imagen:      item.Imagen,
-		Precio:      item.Precio,
 		Clase:       item.Clase,
+		Mts2:        item.Mts2,
+		Precio:      item.Precio,
+		Imagen:      item.Imagen,
+		UsuarioId:   item.UsuarioId,
 	})
 
 	if err != nil {
 		return item, e.NewInternalServerApiError(fmt.Sprintf("error inserting to mongo %s", item.ItemId), err)
 	}
-	item.ItemId = fmt.Sprintf(result.InsertedID.(primitive.ObjectID).Hex())
+
+	item.ItemId = result.InsertedID.(primitive.ObjectID).Hex()
 
 	return item, nil
+}
+
+func (s *ItemClient) GetItemsByUId(id int) (dto.ItemsDto, e.ApiError) {
+	result, err := s.Database.Collection(s.Collection).Find(context.TODO(), bson.D{{Key: "usuario_id", Value: id}})
+	if err != nil {
+		return dto.ItemsDto{}, e.NewInternalServerApiError(fmt.Sprintf("error executing query: %v", err), err)
+	}
+
+	if result.Err() == mongo.ErrNoDocuments {
+		return dto.ItemsDto{}, e.NewNotFoundApiError(fmt.Sprintf("user %d not found", id))
+	}
+
+	var items model.Items
+	if err := result.All(context.TODO(), &items); err != nil {
+		return dto.ItemsDto{}, e.NewInternalServerApiError(fmt.Sprintf("error getting item %d", id), err)
+	}
+
+	var itemsDto dto.ItemsDto
+	for i := range items {
+		item := items[i]
+		itemsDto = append(itemsDto,
+			dto.ItemDto{
+				ItemId:      item.ItemId.Hex(),
+				Titulo:      item.Titulo,
+				Ubicacion:   item.Ubicacion,
+				Vendedor:    item.Vendedor,
+				Descripcion: item.Descripcion,
+				Clase:       item.Clase,
+				Mts2:        item.Mts2,
+				Precio:      item.Precio,
+				Imagen:      item.Imagen,
+				UsuarioId:   item.UsuarioId,
+			})
+	}
+
+	return itemsDto, nil
+}
+
+func (s *ItemClient) DeleteItem(id string) e.ApiError {
+	objectID, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return e.NewBadRequestApiError(fmt.Sprintf("error deleting item %s invalid id", id))
+	}
+
+	result, err := s.Database.Collection(s.Collection).DeleteOne(context.TODO(), bson.M{"_id": objectID})
+	if err != nil {
+		log.Error(err)
+		return e.NewInternalServerApiError("error deleting item", err)
+	}
+	log.Debug(result.DeletedCount)
+
+	result, err = s.Database.Collection(s.Collection).DeleteOne(context.TODO(), bson.M{"id": id})
+	if err != nil {
+		log.Error(err)
+		return e.NewInternalServerApiError("error deleting item", err)
+	}
+	log.Debug(result.DeletedCount)
+	return nil
 }

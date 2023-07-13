@@ -9,4 +9,6 @@ type ItemServices interface {
 	GetItem(id string) (dtos.ItemDto, e.ApiError)
 	InsertItem(item dtos.ItemDto) (dtos.ItemDto, e.ApiError)
 	QueueItems(items dtos.ItemsDto) e.ApiError
+	DeleteUserItems(id int) e.ApiError
+	DeleteItem(id string) e.ApiError
 }

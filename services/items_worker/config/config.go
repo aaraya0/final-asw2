@@ -4,11 +4,11 @@ var (
 	QUEUENAME = "worker_items"
 	EXCHANGE  = "users"
 
-	ITEMSHOST = "items"
+	ITEMSHOST = "localhost"
 	ITEMSPORT = 8090
 
 	RABBITUSER     = "user"
 	RABBITPASSWORD = "password"
-	RABBITHOST     = "rabbit"
+	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
 )

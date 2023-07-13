@@ -9,6 +9,8 @@ import (
 	service "github.com/aaraya0/final-asw2/services/items/services"
 	client "github.com/aaraya0/final-asw2/services/items/services/repositories"
 
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -76,4 +78,42 @@ func QueueItems(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, itemsDto)
+}
+
+func DeleteItem(c *gin.Context) {
+	id := c.Param("item_id")
+	err := itemService.DeleteItem(id)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	c.Status(http.StatusOK)
+}
+
+func GetItemsByUId(c *gin.Context) {
+	var itemsDto dtos.ItemsDto
+	id, _ := strconv.Atoi(c.Param("id"))
+	itemsDto, err := itemService.GetItemsByUId(id)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, itemsDto)
+
+}
+
+func DeleteUserItems(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	err := itemService.DeleteUserItems(id)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, nil)
 }

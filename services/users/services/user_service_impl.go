@@ -79,7 +79,7 @@ func (s *UserService) InsertUser(userDto dto.UserDto) (dto.UserDto, e.ApiError) 
 
 	userDto.UserId = user.ID
 
-	err := s.queue.SendMessage(userDto.UserId, "create", fmt.Sprintf("%d", userDto.UserId))
+	err := s.queue.SendMessage(userDto.UserId, "create", fmt.Sprintf("New user, user id: %d", userDto.UserId))
 	if err != nil {
 		return userDto, e.NewInternalServerApiError("error sending created message on user creation", err)
 	}
@@ -156,7 +156,7 @@ func (s *UserService) UpdateUser(id int, userDto dto.UserDto) (dto.UserDto, e.Ap
 		Username:  updatedUser.Username,
 		Email:     updatedUser.Email,
 	}
-	er := s.queue.SendMessage(userDto.UserId, "update", fmt.Sprintf("%d", userDto.UserId))
+	er := s.queue.SendMessage(userDto.UserId, "update", fmt.Sprintf("User updated, user id: %d", userDto.UserId))
 	if er != nil {
 		return userDto, e.NewInternalServerApiError("error sending created message on user update", er)
 	}
