@@ -5,8 +5,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/aaraya0/final-asw2/services/search/config"
 	"github.com/aaraya0/final-asw2/services/search/dto"
@@ -43,22 +44,29 @@ func (sc *SolrClient) GetQueryAllFields(query string) (dto.ItemsDto, e.ApiError)
 	var itemsDto dto.ItemsDto
 
 	q, err := http.Get(
-		fmt.Sprintf("http://%s:%d/solr/items/query?q=*:*&q.op=OR&indent=true&title:%20%22"+query+"%22=&seller:%20%22"+query+"%22%20=&location:%20%22"+query+"%22%20=&description:%20%22"+query+"%22%20=&useParams=&qt=%2Fselect",
+		fmt.Sprintf("http://%s:%d/solr/items/query?q=*:*&q.op=OR&indent=true&title=%%22"+query+"%%22=&seller=%%22"+query+"%%22=&location=%%22"+query+"%%22=&description=%%22"+query+"%%22=&useParams=&qt=%%2Fselect",
 			config.SOLRHOST, config.SOLRPORT))
-	if err != nil {
-		return itemsDto, e.NewBadRequestApiError("error getting from solr")
-	}
 
-	var body []byte
-	body, err = io.ReadAll(q.Body)
+	body, err := ioutil.ReadAll(q.Body)
 	if err != nil {
+		logger.Fatalln(err)
 		return itemsDto, e.NewBadRequestApiError("error reading body")
 	}
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		return itemsDto, e.NewBadRequestApiError("error in unmarshal")
-	}
+	qr := string(body)
 
+	startIndex := strings.Index(qr, `"docs":[`) + 7
+	res := qr[:startIndex] + strings.ReplaceAll(qr[startIndex:], `:[`, `:`)
+	res2 := strings.ReplaceAll(res, "],", ",")
+	logger.Printf(res2)
+	json.Marshal(res2)
+	json_bytes := []byte(res2)
+
+	err = json.Unmarshal(json_bytes, &response)
+	if err != nil {
+		fmt.Println(err)
+		return itemsDto, e.NewInternalServerApiError("error in unmarshal", err)
+
+	}
 	itemsDto = response.Response.Docs
 	return itemsDto, nil
 }

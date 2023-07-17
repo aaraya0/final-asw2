@@ -40,6 +40,7 @@ func GetQueryAllFields(c *gin.Context) {
 	itemsDto, err := Solr.GetQueryAllFields(query)
 	if err != nil {
 		log.Debug(itemsDto)
+		log.Debug("ping")
 		c.JSON(http.StatusBadRequest, itemsDto)
 		return
 	}
