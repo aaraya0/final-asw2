@@ -30,10 +30,10 @@ func (s *WorkerService) TopicWorker(topic string) {
 		cli := &http.Client{}
 		strs := strings.Split(id, ".")
 		if len(strs) < 2 {
-			resp, err = http.Get(fmt.Sprintf("http://%s:%d/items/%s", config.LBHOST, config.LBPORT, id))
+			resp, err = http.Get(fmt.Sprintf("http://%s:%d/items/%s", config.SOLRHOST, config.SOLRPORT, id))
 		} else {
 			if strs[1] == "delete" {
-				req, err := http.NewRequest("DELETE", fmt.Sprintf("http://%s:%d/items/%s", config.LBHOST, config.LBPORT, strs[0]), nil)
+				req, err := http.NewRequest("DELETE", fmt.Sprintf("http://%s:%d/items/%s", config.ITEMSHOST, config.ITEMSPORT, strs[0]), nil)
 				if err != nil {
 					log.Error(err)
 				}

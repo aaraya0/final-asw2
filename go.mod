@@ -13,6 +13,7 @@ require (
 	github.com/opencontainers/image-spec v1.0.2
 	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/sirupsen/logrus v1.9.3
+	github.com/stevenferrer/solr-go v0.3.3
 	go.mongodb.org/mongo-driver v1.12.0
 	gorm.io/driver/mysql v1.5.1
 	gorm.io/gorm v1.25.2

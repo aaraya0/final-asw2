@@ -16,5 +16,4 @@ var (
 func StartWorker() {
 
 	Worker.TopicWorker("*.*")
-
 }

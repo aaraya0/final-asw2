@@ -4,11 +4,14 @@ var (
 	QUEUENAME = "worker_solr"
 	EXCHANGE  = "items"
 
-	LBHOST = "lbbusqueda"
-	LBPORT = 80
+	ITEMSHOST = "localhost"
+	ITEMSPORT = 8090
+
+	SOLRHOST = "localhost"
+	SOLRPORT = 8060
 
 	RABBITUSER     = "user"
 	RABBITPASSWORD = "password"
-	RABBITHOST     = "rabbit"
+	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
 )

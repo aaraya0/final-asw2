@@ -88,7 +88,7 @@ func (s *ItemService) QueueItems(itemsDto dto.ItemsDto) e.ApiError {
 			if err != nil {
 				log.Debug(err)
 			}
-			err = s.queue.SendMessage("solr", item.ItemId) //se envia a solr el id de cada elemento que se añade a mongodb
+			err = s.queue.SendMessage(item.ItemId, "create", item.ItemId)
 			log.Debug(err)
 		}()
 	}
@@ -108,7 +108,7 @@ func (s *ItemService) DeleteUserItems(id int) e.ApiError {
 			if err != nil {
 				log.Error(err)
 			}
-			err = s.queue.SendMessage(item.ItemId, "delete")
+			err = s.queue.SendMessage(item.ItemId, "delete", fmt.Sprintf("%s.delete", item.ItemId))
 			log.Error(err)
 		}()
 	}
@@ -127,7 +127,7 @@ func (s *ItemService) DeleteItem(id string) e.ApiError {
 	if err != nil {
 		log.Error("Error deleting from cache", err)
 	}
-	err = s.queue.SendMessage("items", fmt.Sprintf("Delete item, item id: "+id))
+	err = s.queue.SendMessage(id, "delete", fmt.Sprintf("%s.delete", id))
 	log.Error(err)
 
 	return nil
