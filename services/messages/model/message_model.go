@@ -6,7 +6,7 @@ type Message struct {
 	ItemId    string `gorm:"type:varchar(255);not null"`
 	Body      string `gorm:"type:varchar(255);not null"`
 	CreatedAt string `gorm:"type:datetime"`
-	System    bool   `gorm:"type:bool""`
+	System    bool   `gorm:"type:bool"`
 }
 
 type Messages []Message

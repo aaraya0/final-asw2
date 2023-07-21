@@ -29,7 +29,7 @@ func NewQueueClient(user string, pass string, host string, port int) *QueueClien
 	}
 }
 
-func (qc *QueueClient) SendMessage(user_id int, item_id string, message string) e.ApiError {
+func (qc *QueueClient) SendMessage(messageid string, action string, message string) e.ApiError {
 	channel, err := qc.Connection.Channel()
 
 	err = channel.ExchangeDeclare(
@@ -50,7 +50,7 @@ func (qc *QueueClient) SendMessage(user_id int, item_id string, message string) 
 	body := message
 	err = channel.PublishWithContext(ctx,
 		"messages",
-		fmt.Sprintf("%d.%d", user_id, item_id),
+		fmt.Sprintf("%s.%s", messageid, action),
 		false,
 		false,
 		amqp.Publishing{

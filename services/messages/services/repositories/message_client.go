@@ -16,21 +16,45 @@ type MessageClient struct {
 }
 
 func NewMessageInterface(DBUser string, DBPass string, DBHost string, DBPort int, DBName string) *MessageClient {
-
-	db, err := gorm.Open(mysql.Open(fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort, DBName)))
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/?charset=utf8&parseTime=True", DBUser, DBPass, DBHost, DBPort)
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(fmt.Sprintf("Error initializing SQL: %v", err))
 	}
+	err = createDatabaseAndSchema(db, DBName)
+	if err != nil {
+		panic(fmt.Sprintf("Error creating db: %v", err))
+	}
+
 	return &MessageClient{
 		Db: db,
 	}
+
+}
+func (s *MessageClient) StartDbEngine() error {
+	err := s.Db.AutoMigrate(&model.Message{})
+	if err != nil {
+		return fmt.Errorf("error migrating database tables: %w", err)
+	}
+
+	log.Info("Finished migrating database tables")
+	return nil
 }
 
-func (s *MessageClient) StartDbEngine() {
-	// We need to migrate all classes model.
-	s.Db.AutoMigrate(&model.Message{})
+func createDatabaseAndSchema(db *gorm.DB, dbName string) error {
+	// Create the database
+	err := db.Exec(fmt.Sprintf("CREATE DATABASE IF NOT EXISTS `%s` CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", dbName)).Error
+	if err != nil {
+		return fmt.Errorf("error creating database: %w", err)
+	}
 
-	log.Info("Finishing Migration Database Tables")
+	// Switch to the created database
+	err = db.Exec(fmt.Sprintf("USE `%s`", dbName)).Error
+	if err != nil {
+		return fmt.Errorf("error switching to database: %w", err)
+	}
+
+	return nil
 }
 
 func (s *MessageClient) GetMessageById(id int) model.Message {
@@ -74,4 +98,14 @@ func (s *MessageClient) InsertMessage(message model.Message) model.Message {
 	}
 	log.Debug("Message Created: ", message.ID)
 	return message
+}
+
+func (s *MessageClient) GetMessagesByItemId(id string) (model.Messages, error) {
+	var messages model.Messages
+	result := s.Db.Find(&messages).Where("item_id = ?", id)
+	if result.Error != nil {
+		return messages, result.Error
+	}
+
+	return messages, nil
 }

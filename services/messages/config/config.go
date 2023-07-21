@@ -1,14 +1,14 @@
 package config
 
 var (
-	SQLHOST = "users_db"
+	SQLHOST = "localhost"
 	SQLPORT = 3306
 	SQLDB   = "users_db"
 	SQLUSER = "root"
-	SQLPASS = ""
+	SQLPASS = "aaraya0"
 
 	RABBITUSER     = "user"
 	RABBITPASSWORD = "password"
-	RABBITHOST     = "rabbit"
+	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
 )

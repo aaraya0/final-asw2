@@ -2,7 +2,10 @@ package services
 
 import (
 	"fmt"
+	"strconv"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	dto "github.com/aaraya0/final-asw2/services/messages/dtos"
 	"github.com/aaraya0/final-asw2/services/messages/model"
@@ -112,7 +115,51 @@ func (s *MessageServiceImpl) InsertMessage(messageDto dto.MessageDto) (dto.Messa
 
 	messageDto.MessageId = message.ID
 	messageDto.CreatedAt = message.CreatedAt
-	s.queue.SendMessage(message.UserId, message.ItemId, fmt.Sprintf("%d", message.ID))
+	s.queue.SendMessage(strconv.Itoa(message.UserId), message.ItemId, fmt.Sprintf("%d", message.ID))
 
 	return messageDto, nil
+}
+
+func (s *MessageServiceImpl) GetMessagesByItemId(id string) (dto.MessagesDto, e.ApiError) {
+
+	var messagesDto dto.MessagesDto
+	var messages, err = s.messageDB.GetMessagesByItemId(id)
+
+	if err != nil {
+		return messagesDto, e.NewBadRequestApiError(err.Error())
+	}
+
+	for _, message := range messages {
+		var messageDto dto.MessageDto
+		messageDto.CreatedAt = message.CreatedAt
+		messageDto.UserId = message.UserId
+		messageDto.ItemId = message.ItemId
+		messageDto.Body = message.Body
+		messageDto.MessageId = message.ID
+		messageDto.System = message.System
+
+		messagesDto = append(messagesDto, messageDto)
+	}
+	return messagesDto, nil
+}
+
+func (s *MessageServiceImpl) DeleteUserMessages(id int) e.ApiError {
+	messages, err := s.GetMessagesByUserId(id)
+	if err != nil {
+		log.Error(err)
+		return err
+	}
+	for i := range messages {
+		var message dto.MessageDto
+		message = messages[i]
+		go func() {
+			err := s.DeleteMessageById(message.MessageId)
+			if err != nil {
+				log.Error(err)
+			}
+			err = s.queue.SendMessage(strconv.Itoa(message.MessageId), "delete", fmt.Sprintf("%s.delete", strconv.Itoa(message.MessageId)))
+			log.Error(err)
+		}()
+	}
+	return nil
 }
