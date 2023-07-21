@@ -26,6 +26,7 @@ func NewWorker(
 func (s *WorkerService) TopicWorker(topic string) {
 	err := s.queue.ProcessMessages(config.EXCHANGE, topic, func(id string) {
 		var resp *http.Response
+		var resp2 *http.Response
 		var err error
 		cli := &http.Client{}
 		strs := strings.Split(id, ".")
@@ -42,12 +43,22 @@ func (s *WorkerService) TopicWorker(topic string) {
 					log.Error(err)
 					log.Debug(resp)
 				}
+				req2, err2 := http.NewRequest("DELETE", fmt.Sprintf("http://%s:%d/items/%s", config.SOLRHOST, config.SOLRPORT, strs[0]), nil)
+				if err2 != nil {
+					log.Error(err2)
+				}
+				resp2, err2 = cli.Do(req2)
+				if err2 != nil {
+					log.Error(err2)
+					log.Debug(resp2)
+				}
+
 			}
 		}
 		log.Debug("Item sent " + id)
 		if err != nil {
 			log.Debug("error in get request")
-			log.Debug(resp)
+			log.Debug(resp, resp2)
 		}
 	})
 	if err != nil {

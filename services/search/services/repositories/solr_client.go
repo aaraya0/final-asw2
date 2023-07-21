@@ -43,10 +43,14 @@ func (sc *SolrClient) GetQueryAllFields(query string) (dto.ItemsDto, e.ApiError)
 	var response dto.SolrResponseDto
 	var itemsDto dto.ItemsDto
 
-	q, err := http.Get(
-		fmt.Sprintf("http://%s:%d/solr/items/query?q=*:*&q.op=OR&indent=true&title=%%22"+query+"%%22=&seller=%%22"+query+"%%22=&location=%%22"+query+"%%22=&description=%%22"+query+"%%22=&useParams=&qt=%%2Fselect",
-			config.SOLRHOST, config.SOLRPORT))
+	/*q, err := http.Get(fmt.Sprintf("http://localhost:8983/solr/items/select?indent=true&json={\"query\":{\"bool\":{\"should\":[{\"lucene\":{\"df\":\"title\",\"query\":\"%s\"}},"+
+	"{\"lucene\":{\"df\":\"description\",\"query\":\"%s\"}},"+
+	"{\"lucene\":{\"df\":\"seller\",\"query\":\"%s\"}},"+
+	"{\"lucene\":{\"df\":\"location\",\"query\":\"%s\"}}]}}}&q.op=OR&q=*:*", query, query, query, query))
+	*/
+	url := "http://localhost:8983/solr/items/select?indent=true&q.op=OR&q=title%3A%22" + query + "%22%0Adescription%3A%22" + query + "%22%0Alocation%3A%22" + query + "%22"
 
+	q, err := http.Get(url)
 	body, err := ioutil.ReadAll(q.Body)
 	if err != nil {
 		logger.Fatalln(err)
@@ -96,7 +100,7 @@ func (sc *SolrClient) Add(itemDto dto.ItemDto) e.ApiError {
 
 func (sc *SolrClient) Delete(id string) e.ApiError {
 	var deleteDto dto.DeleteDto
-	deleteDto.Delete = dto.DeleteDoc{Query: fmt.Sprintf("id:%s", id)}
+	deleteDto.Delete = dto.DeleteDoc{Query: fmt.Sprintf("_id:%s", id)}
 	data, err := json.Marshal(deleteDto)
 	reader := bytes.NewReader(data)
 	if err != nil {

@@ -8,6 +8,8 @@ import (
 	client "github.com/aaraya0/final-asw2/services/users/services/repositories"
 	e "github.com/aaraya0/final-asw2/services/users/utils/errors"
 
+	"time"
+
 	"github.com/golang-jwt/jwt"
 
 	log "github.com/sirupsen/logrus"
@@ -121,7 +123,7 @@ func (s *UserService) DeleteUser(id int) e.ApiError {
 	if err != nil {
 		return e.NewInternalServerApiError("Error notifying other systems of user deletion. Canceling delete", err)
 	}
-
+	time.Sleep(5 * time.Second)
 	var user model.User
 	user.ID = id
 	er := s.userDB.DeleteUser(user)

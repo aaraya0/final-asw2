@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/aaraya0/final-asw2/services/search/config"
 	"github.com/aaraya0/final-asw2/services/search/dto"
@@ -35,7 +36,9 @@ func GetQuery(c *gin.Context) {
 
 func GetQueryAllFields(c *gin.Context) {
 	var itemsDto dto.ItemsDto
+
 	query := c.Param("searchQuery")
+	query = strings.ReplaceAll(query, "+", "%20")
 
 	itemsDto, err := Solr.GetQueryAllFields(query)
 	if err != nil {
