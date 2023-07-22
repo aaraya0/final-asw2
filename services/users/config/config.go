@@ -11,4 +11,7 @@ var (
 	RABBITPASSWORD = "password"
 	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
+
+	MEMCACHEDHOST = "localhost"
+	MEMCACHEDPORT = 11211
 )

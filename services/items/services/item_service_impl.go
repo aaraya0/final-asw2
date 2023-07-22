@@ -11,4 +11,5 @@ type ItemServices interface {
 	QueueItems(items dtos.ItemsDto) e.ApiError
 	DeleteUserItems(id int) e.ApiError
 	DeleteItem(id string) e.ApiError
+	DownloadImage(id string) e.ApiError
 }

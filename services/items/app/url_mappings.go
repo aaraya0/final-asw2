@@ -16,5 +16,7 @@ func mapUrls() {
 	router.DELETE("/users/:id/items", itemController.DeleteUserItems)
 	router.GET("/users/:id/items", itemController.GetItemsByUId)
 
+	router.GET("/items/image/:item_id", itemController.DownloadImage)
+
 	log.Info("Finishing mappings configurations")
 }

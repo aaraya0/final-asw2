@@ -2,7 +2,10 @@ package services
 
 import (
 	"fmt"
+	"io"
 	"net/http"
+	"os"
+	"path/filepath"
 
 	"github.com/aaraya0/final-asw2/services/items/config"
 	dto "github.com/aaraya0/final-asw2/services/items/dtos"
@@ -72,7 +75,8 @@ func (s *ItemService) InsertItem(itemDto dto.ItemDto) (dto.ItemDto, e.ApiError) 
 		return itemDto, e.NewBadRequestApiError("error in insert")
 	}
 	itemDto.ItemId = insertItem.ItemId
-
+	err = s.queue.SendMessage(insertItem.ItemId, "create", insertItem.ItemId)
+	log.Debug(err)
 	itemDto, err2 := s.memcached.InsertItem(itemDto)
 	if err2 != nil {
 		return itemDto, e.NewBadRequestApiError("Error inserting in memcached")
@@ -189,4 +193,39 @@ func (s *ItemService) GetUserById(id int, itemDto dto.ItemDto) (dto.ItemDto, e.A
 	itemRDto.UApellido = userDto.LastName
 	itemRDto.UEmail = userDto.Email
 	return itemRDto, er
+}
+
+func (s *ItemService) DownloadImage(id string) e.ApiError {
+
+	itemDto, err := s.item.GetItem(id)
+
+	if err != nil {
+		return e.NewInternalServerApiError("error getting item", err)
+	}
+
+	// Obtener la imagen desde la URL
+
+	resp, _ := http.Get(itemDto.Imagen)
+	if err != nil {
+		return e.NewInternalServerApiError("error downloading image", err)
+	}
+	defer resp.Body.Close()
+
+	// Crear el archivo en la carpeta "images" con el nombre del ID del item y la extensión de la imagen
+	filePath := filepath.Join("../../frontend/src/images", id+".png") // Puedes usar ".png" u otra extensión según la imagen que esperas recibir.
+
+	// Crear el archivo
+	file, _ := os.Create(filePath)
+	if err != nil {
+		return e.NewInternalServerApiError("error creating image file", err)
+	}
+	defer file.Close()
+
+	// Copiar el contenido de la imagen descargada al archivo
+	_, _ = io.Copy(file, resp.Body)
+	if err != nil {
+		return e.NewInternalServerApiError("error saving image to file", err)
+	}
+
+	return nil
 }

@@ -117,3 +117,15 @@ func DeleteUserItems(c *gin.Context) {
 
 	c.JSON(http.StatusOK, nil)
 }
+
+func DownloadImage(c *gin.Context) {
+	id := c.Param("item_id")
+	err := itemService.DownloadImage(id)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	c.Status(http.StatusOK)
+}
