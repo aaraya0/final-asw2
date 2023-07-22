@@ -1,11 +1,11 @@
-FROM golang:1.18
+FROM golang:1.20
 
-ADD . /items_worker
+ADD . /messages_worker
 
-WORKDIR /items_worker
-RUN go mod init github.com/aaraya0/final-asw2/services/items_worker
+WORKDIR /messages_worker
+RUN go mod init github.com/aaraya0/final-asw2/services/messages_worker
 RUN go mod tidy
-RUN go build -o items_worker .
-RUN chmod +x /items_worker
+RUN go build -o messages_worker .
+RUN chmod +x /messages_worker
 
-ENTRYPOINT ["/items_worker/items_worker"]
+ENTRYPOINT ["/messages_worker/messages_worker"]

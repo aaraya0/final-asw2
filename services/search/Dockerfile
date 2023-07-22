@@ -1,11 +1,11 @@
 FROM golang:1.20
 
-ADD . /busqueda
+ADD . /search
 
-WORKDIR /busqueda
-RUN go mod init wesolr
+WORKDIR /search
+RUN go mod init github.com/aaraya0/final-asw2/services/search
 RUN go mod tidy
-RUN go build -o wesolr .
-RUN chmod +x /busqueda
+RUN go build -o search .
+RUN chmod +x /search
 
-ENTRYPOINT ["/busqueda/wesolr"]
+ENTRYPOINT ["/search/search"]

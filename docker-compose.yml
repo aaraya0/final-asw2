@@ -1,21 +1,23 @@
-version: '2'
+version: '3'
 
+networks:
+  front:
 services:
- 
-  mongo:
+  items_db:
     image: mongo
     restart: always
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_INITDB_DAABASE=items
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_DATA_DIR: /data/db
+      MONGO_INITDB_DAABASE: items
     ports:
       - "27017:27017"
 
   memcached:
     container_name: cache
     image: memcached:1.6.16
+
     ports:
       - "11211:11211"
 
@@ -23,15 +25,15 @@ services:
     container_name: rabbit
     image: rabbitmq:3-management
     environment:
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=password
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
     ports:
       - "5671:5671"
       - "5672:5672"
       - "8080:15672"
     volumes:
-      - ./rabbit/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
-      - ./rabbit/definitions.json:/etc/rabbitmq/definitions.json:ro
+      - ./configs/rabbit/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+      - ./configs/rabbit/definitions.json:/etc/rabbitmq/definitions.json:ro
     healthcheck:
       test: rabbitmq-diagnostics check_port_connectivity
       interval: 1s
@@ -47,31 +49,91 @@ services:
       - docker-entrypoint.sh
       - solr-precreate
       - items
-
   items:
     build: ./services/items
     depends_on:
-      - mongo
-      - memcached
-      - rabbit
+      items_db:
+        condition: service_started
+      memcached:
+        condition: service_started
+      rabbit:
+        condition: service_healthy
     ports:
       - "8090:8090"
-  admin:
-    build: ./admin
+
+  users:
+    build: ./services/users
+    depends_on:
+      rabbit:
+        condition: service_healthy
     ports:
-      - "8000:8000"
+      - "9000:9000"
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=aaraya0
+
+  messages:
+    build: ./services/messages
+    depends_on:
+    
+      rabbit:
+        condition: service_healthy
+    ports:
+      - "9001:9001"
+
+  search:
+    build: ./services/search
+
+    depends_on:
+      solr:
+        condition: service_started
+      items:
+        condition: service_started
+    deploy:
+      mode: replicated
+      replicas: 2
+    ports:
+      - "8060:8060"
+
+
+  frontend:
+    networks:
+      - front
+    container_name: frontend
+    build: ./frontend
+    depends_on:
+      search:
+        condition: service_started
+    ports:
+      - "3000:3000"
+
+
   lbbusqueda:
     build: ./configs/lb
+    depends_on:
+      search:
+        condition: service_started
     ports:
       - "80:80"
-
-  items_worker:
-    build: ./services/items_worker
-    depends_on:
-      - lbbusqueda
 
   solr_worker:
     build: ./services/solr_worker
     depends_on:
-      - lbbusqueda
+      search:
+        condition: service_started
+      lbbusqueda:
+        condition: service_started
 
+  items_worker:
+    build: ./services/items_worker
+    depends_on:
+      items:
+        condition: service_started
+
+  messages_worker:
+    build: ./services/messages_worker
+    depends_on:
+      items:
+        condition: service_started
