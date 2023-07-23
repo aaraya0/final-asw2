@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import "./styles/Register.css";
+import "./Register.css";
 import Cookies from "universal-cookie";
-import logo from "./images/logo.png";
-import usersvg from "./images/user.svg";
+
 import {HOST, PORT, USERSHOST,USERSPORT} from "./config/config";
 
 const Cookie = new Cookies();
-const URL = `${USERSHOST}:${USERSPORT}`
+const URL = "http://localhost:9000"
 
 async function register(username, password, first_name, last_name, email) {
   return await fetch(`${URL}/user`, {
@@ -66,7 +65,7 @@ function Register() {
 
   const login = (
     <span>
-        <img src={usersvg} onClick={()=>goto("/user")} id="user" width="48px" height="48px"/>
+        <button onClick={()=>goto("/user")} id="user" width="48px" height="48px">button</button>
     </span>
   )
 
@@ -125,16 +124,13 @@ function Register() {
     <div>
     <div className="home">
       <div className="topnavHOME">
-        <div>
-          <img src={logo} width="80px" height="80px" id="logo" onClick={()=>goto("/")} /> <p> HouseHunter </p>
-        </div>
+    
       </div>
     </div>
 
     <div className="app">
       <div className="login-form">
-        <div className="title">Crear Usuario</div>
-
+      
         {isSubmitted || Cookie.get("user_id") > -1 ? Cookie.get("username") : renderForm}
       </div>
     </div>

@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
-import "./styles/App.css";
-import Home from "./Home"
-import Login from "./Login"
-import Register from "./Register"
-import Item from "./Item"
-import Sistema from "./Sistema"
-import Publication from "./Publication"
-import MyComments from "./MyComments"
-import User from "./User.js"
+import React from 'react';
+import './App.css';
+import Search from './components/Search';
+import Results from './components/Results';
+import NavBar from './components/NavBar';
+import Login from './components/Login'
+import Register from './components/Register'
 
-function App(){
-return (
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+function App() {
+  return (
+    <>
     <Router>
-      <Routes>
-        <Route exact path = "/" element={<Home/>}/>
-        <Route path= "/login" element={<Login/>}/>
-        <Route path= "/register" element={<Register/>}/>
-        <Route path= "/item" element={<Item/>}/>
-        <Route path= "/sistema" element={<Sistema/>}/>
-        <Route path= "/publications" element={<Publication/>}/>
-        <Route path= "/mycomments" element={<MyComments/>}/>
-        <Route path= "/user" element={<User/>}/>
-      </Routes>
+    
+    <NavBar/>
+    <Routes>
+    <Route exact path="/" element={<Login/>}/>
+    <Route exact path="/register" element={<Register/>}/>
+
+    </Routes>
+ 
+    
+    
     </Router>
+      
+  
+    </>
   );
 }
-
 
 export default App;

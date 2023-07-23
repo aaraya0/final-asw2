@@ -1,0 +1,99 @@
+* {
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+
+#titulogrande{
+ font-size: 40px;
+ text-align: center;
+ color:#235400;
+ text-shadow:  0 1px 3px #183710;
+ font-family:nunito ;
+}
+
+#tituloitem{
+  color:#363535;
+  font-size: 40px;
+  font-family:nunito;
+  margin-top:20px;
+  margin-left:40px;
+  font-weight: 1000;
+
+  
+  text-shadow: 1px 1px 3px #242424;
+  }
+  
+  #description{
+  
+  font-style: italic;
+  font-weight: 400;
+  font-size: 40px;
+  padding-top: 4px;
+  font-size: 20px;
+  position: absolute;
+  display: block;
+  color:#2d4a30;
+  }
+  #location{
+ 
+  font-size:25px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  color:#363535;
+  
+  }
+  #info{
+      position: absolute;
+  display: block;
+  margin-left: 345px;
+  margin-top: 80px;
+  width: 400px;
+  text-align: left;
+  font-family:nunito;
+  }
+  
+  .item {
+  /* Add shadows to create the "card" effect */
+
+  transition: 0.3s;
+  margin: 10px;
+  
+  width: 1150px;
+  height:300px;
+  text-align: center;
+
+  background-color: rgba(89, 107, 89, 0.637);
+  border-radius: 20px;
+
+  
+  display: flex;
+ 
+  
+  margin-left: 50px;
+  }
+  .item:hover{
+  
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transform: scale(1.05);
+  
+}
+
+
+
+#imagen{
+
+width: 300px;
+height:300px;
+border-radius: 20px;
+
+
+box-shadow: 0 4px 8px 0 rgba(114, 240, 175, 0.2);
+position:relative;
+
+}
