@@ -24,8 +24,8 @@ var (
 	MONGOPORT       = 27017
 	MONGOCOLLECTION = "items"
 
-	RABBITUSER     = "user"
-	RABBITPASSWORD = "password"
+	RABBITUSER     = "guest"
+	RABBITPASSWORD = "guest"
 	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
 

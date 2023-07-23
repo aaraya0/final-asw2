@@ -7,8 +7,8 @@ var (
 	ITEMSHOST = "localhost"
 	ITEMSPORT = 8090
 
-	RABBITUSER     = "user"
-	RABBITPASSWORD = "password"
+	RABBITUSER     = "guest"
+	RABBITPASSWORD = "guest"
 	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
 )

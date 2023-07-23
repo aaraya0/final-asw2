@@ -7,8 +7,8 @@ var (
 	SQLUSER = "root"
 	SQLPASS = "aaraya0"
 
-	RABBITUSER     = "user"
-	RABBITPASSWORD = "password"
+	RABBITUSER     = "guest"
+	RABBITPASSWORD = "guest"
 	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
 
