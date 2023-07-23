@@ -8,6 +8,8 @@ import Register from './components/Register';
 import Message from './components/Message';
 import Publication from './components/Publication';
 
+import Account from './components/Account';
+
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
     <Route exact path="/register" element={<Register/>}/>
     <Route exact path="/info" element={<Message/>}/>
     <Route exact path="/publish" element={<Publication/>}/>
+    <Route exact path="/user" element={<Account/>}/>
 
     </Routes>
  
