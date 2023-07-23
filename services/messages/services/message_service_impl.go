@@ -42,7 +42,7 @@ func (s *MessageServiceImpl) GetMessageById(id int) (dto.MessageDto, e.ApiError)
 	messageDto.ItemId = message.ItemId
 	messageDto.Body = message.Body
 	messageDto.CreatedAt = message.CreatedAt
-	messageDto.System = message.System
+	messageDto.Transmitter = message.Transmitter
 	return messageDto, nil
 }
 
@@ -73,7 +73,7 @@ func (s *MessageServiceImpl) GetMessagesByUserId(id int) (dto.MessagesDto, e.Api
 		messageDto.ItemId = message.ItemId
 		messageDto.Body = message.Body
 		messageDto.MessageId = message.ID
-		messageDto.System = message.System
+		messageDto.Transmitter = message.Transmitter
 
 		messagesDto = append(messagesDto, messageDto)
 	}
@@ -92,7 +92,7 @@ func (s *MessageServiceImpl) GetMessages() (dto.MessagesDto, e.ApiError) {
 		messageDto.ItemId = message.ItemId
 		messageDto.Body = message.Body
 		messageDto.MessageId = message.ID
-		messageDto.System = message.System
+		messageDto.Transmitter = message.Transmitter
 
 		messagesDto = append(messagesDto, messageDto)
 	}
@@ -109,7 +109,7 @@ func (s *MessageServiceImpl) InsertMessage(messageDto dto.MessageDto) (dto.Messa
 	message.ItemId = messageDto.ItemId
 	message.Body = messageDto.Body
 	message.ID = messageDto.MessageId
-	message.System = messageDto.System
+	message.Transmitter = messageDto.Transmitter
 
 	message = s.messageDB.InsertMessage(message)
 
@@ -136,7 +136,7 @@ func (s *MessageServiceImpl) GetMessagesByItemId(id string) (dto.MessagesDto, e.
 		messageDto.ItemId = message.ItemId
 		messageDto.Body = message.Body
 		messageDto.MessageId = message.ID
-		messageDto.System = message.System
+		messageDto.Transmitter = message.Transmitter
 
 		messagesDto = append(messagesDto, messageDto)
 	}

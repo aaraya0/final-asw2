@@ -27,7 +27,7 @@ function parseField(field) {
 function showItems(items) {
   
   return items.map((item) => (
-    <div obj={item} key={item._id} className="item">
+    <div obj={item} key={item._id} className="item" onClick={() => goto("/info")}>
       <img id="imagen" src={`img/${item._id}.png`} alt={`${item._id}`}/>
       <a id="tituloitem">{parseField(item.title)}</a>
 
