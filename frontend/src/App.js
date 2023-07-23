@@ -3,8 +3,9 @@ import './App.css';
 import Search from './components/Search';
 import Results from './components/Results';
 import NavBar from './components/NavBar';
-import Login from './components/Login'
-import Register from './components/Register'
+import Login from './components/Login';
+import Register from './components/Register';
+import Message from './components/Message'
 
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <Route exact path="/home" element={<Search/>}/>
     <Route exact path="/results" element={<Results/>}/>
     <Route exact path="/register" element={<Register/>}/>
+    <Route exact path="/info" element={<Message/>}/>
 
     </Routes>
  

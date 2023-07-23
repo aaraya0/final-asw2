@@ -27,7 +27,15 @@ function parseField(field) {
 function showItems(items) {
   
   return items.map((item) => (
-    <div obj={item} key={item._id} className="item" onClick={() => goto("/info")}>
+    <div
+    obj={item}
+    key={item._id}
+    className="item"
+    onClick={() => {
+      goto("/info");
+      cookies.set("item_id", item._id);
+    }}
+  >
       <img id="imagen" src={`img/${item._id}.png`} alt={`${item._id}`}/>
       <a id="tituloitem">{parseField(item.title)}</a>
 
