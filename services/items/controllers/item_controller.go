@@ -61,7 +61,7 @@ func InsertItem(c *gin.Context) {
 func QueueItems(c *gin.Context) {
 	var itemsDto dtos.ItemsDto
 	err := c.BindJSON(&itemsDto)
-
+	fmt.Println("Received JSON:", err)
 	// Error Parsing json param
 	if err != nil {
 		fmt.Println(err)

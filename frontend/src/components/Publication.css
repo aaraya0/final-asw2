@@ -1,0 +1,67 @@
+/* Publication.css */
+
+
+.input-publ {
+    margin-top: 5%;
+    margin-bottom: 1%;
+    margin-left: 29.5%;
+    font-size: 18px;
+    background-color: #242424;
+    color: #fff8dbeb;
+   border:none;
+    height: auto;
+    min-width: 700px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    &:hover {
+    
+       color: #45a049;
+    }
+    
+  }
+  pre {
+    background-color: #48792a;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    max-width: 700px;
+    overflow-x: auto;
+    margin-left: 29%;
+    color: #fff8dbeb;
+    font-weight: 100;
+  }
+  
+  button {
+   
+    margin-top: 1%;
+    margin-left: 45%;
+   
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    background: #242424;
+    border: 1px solid #242424;
+    color: #fff8dbeb;
+    height: 40px;
+    width:150px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .message {
+    margin-top: 10px;
+    color: #4caf50;
+    font-size: 14px;
+  }
+  
+  .msj{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:#242424;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-left: 41%;
+  }
