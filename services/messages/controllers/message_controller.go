@@ -16,7 +16,7 @@ import (
 var (
 	messageService = service.NewMessageServiceImpl(
 		client.NewMessageInterface(config.SQLUSER, config.SQLPASS, config.SQLHOST, config.SQLPORT, config.SQLDB),
-		client.NewQueueClient(config.RABBITUSER, config.RABBITPASSWORD, config.RABBITHOST, config.RABBITPORT),
+		client.NewQueueClient("guest", "guest", "localhost", 5672),
 	)
 )
 

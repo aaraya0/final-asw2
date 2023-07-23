@@ -10,8 +10,8 @@ var (
 	MESSAGESHOST = "localhost"
 	MESSAGESPORT = 9001
 
-	RABBITUSER     = "user"
-	RABBITPASSWORD = "password"
+	RABBITUSER     = "guest"
+	RABBITPASSWORD = "guest"
 	RABBITHOST     = "localhost"
 	RABBITPORT     = 5672
 )
