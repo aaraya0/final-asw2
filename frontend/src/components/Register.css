@@ -13,6 +13,7 @@
     position: absolute;
     top: 100px;
     left: 450px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   
   .form label {

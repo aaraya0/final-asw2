@@ -55,7 +55,7 @@ function Register() {
     // Validate user registration TODO: Check if the username is not taken
     register(uname.value, pass.value, first_name.value, last_name.value, email.value).then(data => {
       if (pass.value === cpass.value) {
-        goto("/login")
+        goto("/")
       }
       else{
         setErrorMessages({name: "default", message: error})

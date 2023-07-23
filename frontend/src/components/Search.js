@@ -44,9 +44,8 @@ const renderForm = (
       <div class="td">
         <input type="text" id="search_query" placeholder="Buscar" name="search" required /></div>
       <div class="td" id="s-cover">
-      <button  id="search_button" onClick={SearchByQuery(cookies.set("busqueda", window.location.search))} type="input">
-          <div id="s-circle"></div>
-          <span></span>
+      <button  id="lupa" onClick={SearchByQuery(cookies.set("busqueda", window.location.search))} type="input">
+         <img src="img/lupa.png"></img>
         </button>
       </div>
     </div>
@@ -60,7 +59,7 @@ const renderForm = (
       <div class="container">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h3 class="animate-charcter">Bienes Raices</h3>
+      <h3 class="animate-charcter">Bienes Raíces</h3>
       <img id="logo" src="img/tree-and-roots.png"></img>
     </div>
   </div>

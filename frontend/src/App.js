@@ -11,10 +11,11 @@ function App() {
   return (
     <>
     <Router>
-    
     <NavBar/>
     <Routes>
     <Route exact path="/" element={<Login/>}/>
+    <Route exact path="/home" element={<Search/>}/>
+    <Route exact path="/results" element={<Results/>}/>
     <Route exact path="/register" element={<Register/>}/>
 
     </Routes>

@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 30px;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -13,40 +13,42 @@
     
     .navbar-container {
     display: flex;
-    justify-content: center;
+    justify-content:end;
     align-items: center;
     height: 80px;
     max-width: 1900px;
     background-color: #243707;
-    margin-right: 10px;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
     
     .navbar-logo {
     color: #fff8dbeb;
     justify-self: start;
     position: fixed;
-    left:130px;
+    left:50px;
     cursor: pointer;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 30px;
     display: flex;
     align-items: center;
     }
     
     .fa-typo3 {
     margin-left: 0.5rem;
-    font-size: 1.8rem;
+    font-size:30px;
     }
     
     .nav-menu {
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-gap: 10px;
+    right: 50px;
     list-style: none;
     text-align: center;
     width: 60vw;
     justify-content: end;
-    margin-right: 2rem;
+    
     background-color: #243707;
     
     }
@@ -55,6 +57,7 @@
     height: 80px;
     background-color: #243707;
     margin-right: 10px;
+    right: 50px;
     }
     
     .nav-links { 
@@ -65,7 +68,7 @@
     padding: 0.5rem 1rem;
     height: 60px;
     background-color: #243707;
-    
+    margin-right: 20px;
     }
     
     .nav-links:hover {
@@ -99,10 +102,10 @@
     height: 90vh;
     position: absolute;
     top: 80px;
-    left: -100%;
+    
     opacity: 1;
     transition: all 0.5s ease;
-    margin-right: 10px;
+    
     }
     
     .nav-menu.active {
@@ -140,7 +143,7 @@
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    font-size: 30px;
     cursor: pointer;
     }
     
@@ -179,7 +182,7 @@
     
     .logInfo{
     color: #fff8dbeb;
-    font-size: 15px;
+    font-size: 35px;
     display:flex;
     }
 

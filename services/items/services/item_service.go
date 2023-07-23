@@ -212,7 +212,7 @@ func (s *ItemService) DownloadImage(id string) e.ApiError {
 	defer resp.Body.Close()
 
 	// Crear el archivo en la carpeta "images" con el nombre del ID del item y la extensión de la imagen
-	filePath := filepath.Join("../../frontend/src/images", id+".png") // Puedes usar ".png" u otra extensión según la imagen que esperas recibir.
+	filePath := filepath.Join("../../frontend/public/img", id+".png") // Puedes usar ".png" u otra extensión según la imagen que esperas recibir.
 
 	// Crear el archivo
 	file, _ := os.Create(filePath)

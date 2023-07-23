@@ -6,11 +6,28 @@ const Cookie = new Cookies();
 const URL = "http://localhost:9000";
 
 async function login(username, password) {
-  // ... (función login sin cambios) ...
+  return await fetch(`${URL}/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+	body: JSON.stringify({"username": username, "password":password})
+  })
+    .then(response => {
+      if (response.status === 400 || response.status === 401)
+      {
+        return {"user_id": -1}
+      }
+      return response.json()
+    })
+    .then(response => {
+      Cookie.set("user_id", response.user_id, {path: '/'})
+      Cookie.set("username", username, {path: '/login'})
+    })
 }
 
-function goto(path) {
-  window.location = window.location.origin + path;
+function goto(path){
+  window.location = window.location.origin + path
 }
 
 function Login() {
@@ -23,7 +40,7 @@ function Login() {
 
     login(uname.value, pass.value).then((data) => {
       if (Cookie.get("user_id") > -1) {
-        goto("/");
+        goto("/home");
       } else if (Cookie.get("user_id") === -1) {
         setErrorMessages({ name: "default", message: error });
       }
