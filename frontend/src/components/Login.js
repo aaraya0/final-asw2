@@ -64,8 +64,8 @@ function Login() {
           <input type="password" name="pass" id="pass" required />
           {renderErrorMessage("pass")}
         </div>
-        <div id="iniciar-sesion">
-          <input type="submit" value="Iniciar Sesión" />
+        <div >
+          <input type="submit" value="Iniciar Sesión" id="iniciar-sesion"/>
         </div>
       </form>
       <div id="registerlink">
