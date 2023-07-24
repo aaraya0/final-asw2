@@ -6,7 +6,6 @@ import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 const URL = "http://localhost:9001"
-const defaultMessage = "Hola, estoy interesado en obtener más información sobre esta propiedad.";
 async function getItem() {
     var id = cookies.get("item_id")
     return await fetch("http://localhost:8090/items/" + id).then((response) => response.json());
@@ -105,10 +104,10 @@ function Message() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label className="label">Contactate por la propiedad enviando un mensaje:</label>
-          <input type="text"  name="body" className="text-area"  defaultValue={defaultMessage}/>
+          <input type="text"  name="body" id="msg-area" />
         </div>
         <div className="button-container">
-          <input type="submit" value="Enviar mensaje"/>
+          <input type="submit" id="enviar" value="Enviar mensaje"/>
         </div>
       </form>
       

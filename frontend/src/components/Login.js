@@ -11,23 +11,22 @@ async function login(username, password) {
     headers: {
       'Content-Type': 'application/json'
     },
-	body: JSON.stringify({"username": username, "password":password})
+    body: JSON.stringify({ "username": username, "password": password })
   })
     .then(response => {
-      if (response.status === 400 || response.status === 401)
-      {
-        return {"user_id": -1}
+      if (response.status === 400 || response.status === 401) {
+        return { "user_id": -1 };
       }
-      return response.json()
+      return response.json();
     })
     .then(response => {
-      Cookie.set("user_id", response.user_id, {path: '/'})
-      Cookie.set("username", username, {path: '/login'})
-    })
+      Cookie.set("user_id", response.user_id, { path: '/' });
+      Cookie.set("username", username, { path: '/login' });
+    });
 }
 
-function goto(path){
-  window.location = window.location.origin + path
+function goto(path) {
+  window.location = window.location.origin + path;
 }
 
 function Login() {
@@ -49,33 +48,33 @@ function Login() {
 
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
+      <div id="error">{errorMessages.message}</div>
     );
 
-    return (
-        <div className="form2">
-    <form onSubmit={handleSubmit}>
-    <div className="input-container">
-    <label>Usuario </label>
-    <input type="text" name="uname" required />
-    {renderErrorMessage("uname")}
-    </div>
-    <div className="input-container">
-    <label>Contraseña </label>
-    <input type="password" name="pass" required />
-    {renderErrorMessage("pass")}
-    </div>
-    <div className="button-container">
-    <input type="submit" value="Iniciar Sesión"/>
-    </div>
-    </form>
-    <div id="registerlink">
-    <button id="register" onClick={() => goto("/register")}>
-        Register
-      </button>
+  return (
+    <div id="contenedor">
+      <form onSubmit={handleSubmit} id="form2">
+        <div id="usuario">
+          <label>Usuario </label>
+          <input type="text" name="uname" id="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div id="password">
+          <label>Contraseña </label>
+          <input type="password" name="pass" id="pass" required />
+          {renderErrorMessage("pass")}
+        </div>
+        <div id="iniciar-sesion">
+          <input type="submit" value="Iniciar Sesión" />
+        </div>
+      </form>
+      <div id="registerlink">
+        <button id="register" onClick={() => goto("/register")}>
+          Registrarse
+        </button>
       </div>
     </div>
-      );
-    }
-    
-    export default Login;
+  );
+}
+
+export default Login;

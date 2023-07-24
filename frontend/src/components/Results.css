@@ -1,5 +1,4 @@
 * {
-  
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -9,112 +8,80 @@ body {
   min-height: 100%;
 }
 
-
-#titulogrande{
- font-size: 30px;
- text-align: center;
-
-margin-bottom: 50px;
-margin-top: 50px;
- 
+#titulogrande {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
-#tituloitem{
-  
+#tituloitem {
   font-size: 30px;
   font-weight: bolder;
-  margin-top:20px;
-  margin-left:40px;
- 
-  }
-  
-  #description{
-  
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+#description {
   font-weight: 400;
   font-size: 21px;
   display: block;
   margin-bottom: 10px;
+}
 
-  }
-  #location{
- 
-  font-size:21px;
+#location {
+  font-size: 21px;
   margin-bottom: 20px;
   font-weight: bold;
+}
 
-  
-  }
+#price {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
 
-  #price{
- 
-    font-size:20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  
-    
-    }
+#mts {
+  margin-bottom: 10px;
+  margin-left: 30px;
+  font-size: 18px;
+}
 
-    #mts{
- 
-     
-      margin-bottom: 10px;
-      margin-left: 30px;
-      font-size: 18px;
- 
-      }
-      #mts img{
-        width: 22px;
-        height: 22px;
-        margin-left: -30px;
-        margin-right: 10px;
-      }
-  #info{
- 
-  display: block;
-  margin-top: 80px;
- margin-left: -23%;
-  text-align: left;
-  
-  }
-  
-  .item {
-  /* Add shadows to create the "card" effect */
+#mts img {
+  width: 22px;
+  height: 22px;
+  margin-left: -30px;
+  margin-right: 10px;
+}
 
-  transition: 0.1s;
+
+#item {
+
   margin: 30px;
-  
   width: 93%;
-  height:300px;
+  height: 300px;
   text-align: center;
-
   border-radius: 20px;
   display: flex;
- color:#183710;
- border: 0.5px solid #242424;
+  color: #183710;
+  border: 0.5px solid #242424;
   margin-left: 50px;
-  }
-  .item:hover{
-  
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  transform: scale(1.005);
+}
+
+#item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   
 }
 
-
-
-#imagen{
-
+#imagen {
   width: 500px;
-  height:300px;
-border-radius: 20px;
-border-end-end-radius: 0px;
-border-start-end-radius: 0px;
-box-shadow: 0 4px 8px 0 rgba(114, 240, 175, 0.2);
-position:relative;
-
+  height: 300px;
+  border-radius: 20px;
+  border-end-end-radius: 0px;
+  border-start-end-radius: 0px;
+  box-shadow: 0 4px 8px 0 rgba(114, 240, 175, 0.2);
+  position: relative;
 }
-
-/* results.css */
 
 /* Estilos generales del botón */
 #search_button {
@@ -122,44 +89,12 @@ position:relative;
   color: #cccccc;
   width: 200px;
   height: 50px;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 17px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+ 
 }
+#info {
 
-/* Estilos cuando se coloca el cursor sobre el botón */
-#search_button:hover {
-  background-color: #45a049;
-}
-
-/* Estilos cuando se hace clic en el botón */
-#search_button:active {
-  background-color: #3e8e41;
-}
-
-/* Estilos cuando el botón está deshabilitado */
-#search_button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-#no_results{
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-}
-
-/* Estilos para el div "no_results" */
-.no_results {
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 20px;
+  text-align: left;
+  position: absolute;
+  top: 300px;
+  left: 570px;
 }

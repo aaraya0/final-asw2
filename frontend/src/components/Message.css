@@ -18,10 +18,7 @@
   
   
 
-
-  
-
-.text-area{
+#msg-area{
   
     margin-left: 560px;
     border-radius:10px;
@@ -32,11 +29,8 @@
  font-size:18px;
  color:#242424;
  padding: 10px;
-}
-
-input[type="submit"]{
-
-    border-radius:15px ;
+ background-color: white;
+ margin-top: 30px;
 }
 
 .label{
@@ -48,3 +42,21 @@ input[type="submit"]{
     margin-bottom: 20px;
     
 }
+
+#enviar{
+    border-radius:15px ;
+    background-color: #242424;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: -3%;
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    color: #fff8dbeb;
+}
+
+#enviar:hover{
+    background: green;
+}
+

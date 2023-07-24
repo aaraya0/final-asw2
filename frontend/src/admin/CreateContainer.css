@@ -1,0 +1,14 @@
+/* CreateContainerPage.css */
+
+
+  #image, #nombre {
+    background-color: white;
+    min-width: 200px;
+    min-height: 30px;
+    font-size: 18px;
+    color:#242424;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+    
+  }
+ 

@@ -7,6 +7,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Message from './components/Message';
 import Publication from './components/Publication';
+import Item from './components/Item';
+import ContainerList from './admin/ContainerList';
+import CreateContainer from './admin/CreateContainer';
 
 import Account from './components/Account';
 
@@ -24,6 +27,9 @@ function App() {
     <Route exact path="/info" element={<Message/>}/>
     <Route exact path="/publish" element={<Publication/>}/>
     <Route exact path="/user" element={<Account/>}/>
+    <Route exact path="/messages" element={<Item/>}/>
+    <Route exact path="/admin" element={<ContainerList/>}/>
+    <Route exact path="/admin/create" element={<CreateContainer/>}/>
 
     </Routes>
  

@@ -25,12 +25,12 @@
     .navbar-logo {
     color: #fff8dbeb;
     justify-self: start;
-    position: fixed;
+ position: absolute;
     left:50px;
     cursor: pointer;
     text-decoration: none;
     font-size: 30px;
-    display: flex;
+    
     align-items: center;
     }
     

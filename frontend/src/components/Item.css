@@ -1,0 +1,68 @@
+#information{
+  margin-left: 80px;
+  width: 90%;
+  height:200px;
+  text-align: center;
+
+  border-radius: 20px;
+
+ color:#183710;
+ border: 0.5px solid #242424;
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+ 
+}
+#usuario{
+font-size: 20px;
+font-weight: bold;
+display: flex;
+margin-top: 20px;
+margin-left: 45px;
+}
+#usuario img{
+    width:25px;
+    height: 25px;
+    display:flex;
+    margin-right: 20px;
+}
+#mail{
+display: flex;
+margin-left: 100px;
+font-style: oblique;
+font-size: 18px;
+}
+#mensaje{
+    font-size: 22px;
+    font-weight: bolder;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 45px;
+    color:green;
+}
+#mensaje img{
+    width:25px;
+    height: 25px;
+    display:flex;
+    margin-right: 20px;
+}
+#hora{
+    display: flex;
+    margin-left: 100px;
+    font-style: oblique;
+    font-size: 18px;
+    margin-top: 25px;
+    margin-left: 45px;
+}
+#hora img{
+    width:25px;
+    height: 25px;
+    display:flex;
+    margin-right: 20px;
+}
+#titulo-msj{
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color:#242424;
+
+}
+

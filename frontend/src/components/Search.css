@@ -1,86 +1,76 @@
 * {
-    outline: none;
-  }
-  
-  html,
-  body {
-    height: 100%;
-    min-height: 100%;
-  }
-  
-  body {
-    margin: 0;
-    background-color: #fff8dbeb;
-  }
-  
-  .tb {
-    display: table;
-    width: 100%;
-  }
-  
-  .td {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  
-  input,
-  button {
-    color: #fff8dbeb;
-    font-family: Nunito;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
-  }
-  
-  #cover {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    width: 900px;
-    padding: 30px;
-    margin: -83px auto 0 auto;
-    background-color: #48792a;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px #2a631b, 0 0 0 20px #fff8dbeb;
-    transform: scale(0.6);
-  }
-  
-  form {
-    height: 100px;
-  }
-  
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #fff8dbeb;
+}
+
+.tb {
+  display: table;
+  width: 100%;
+}
+
+.td {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+input,
+button {
+  color: #fff8dbeb;
+  font-family: Nunito;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+#cover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 900px;
+  padding: 30px;
+  margin: -83px auto 0 auto;
+  background-color: #48792a;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px #2a631b, 0 0 0 20px #fff8dbeb;
+  transform: scale(0.6);
+}
+
+form {
+  height: 100px;
+}
+
+#search_query {
+  width: 700px;
+  height: 90px;
+  font-size: 50px;
+ 
+  border-radius: 10px;
+  color:#fff8dbeb;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 
-  #search_query{
-    width: 700px;
-    height: 50px;
-    font-size: 30px;
-    background-color: #fff8dbeb;
-  
-    border-radius: 10px;
-   
-    
-  }
-  
-  
-  
-  button {
-    position: relative;
-    display: block;
-    width: 80px;
-    height: 96px;
-    cursor: pointer;
-  }
-  
-  
-  
-  
-  
-  .animate-charcter
-{
-   
+button {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 96px;
+  cursor: pointer;
+}
+
+.animate-charcter {
   background-image: linear-gradient(
     10deg,
     #10501a 0%,
@@ -88,7 +78,7 @@
     #48792a 67%,
     #23af4d 100%
   );
- text-shadow:  0 10px 40px #2a631b;
+  text-shadow: 0 10px 40px #2a631b;
   background-size: auto auto;
   background-clip: border-box;
   background-size: 200% auto;
@@ -98,12 +88,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
-  display:flex;
+  display: flex;
   position: absolute;
   margin-top: 140px;
   margin-left: 33%;
-      font-size: 80px;
-      font-family:nunito;
+  font-size: 80px;
+  font-family: nunito;
 }
 
 @keyframes textclip {
@@ -112,27 +102,32 @@
   }
 }
 
-#logo{
+#logo {
   width: 100px;
-position: absolute;
-margin-top: 145px;
-margin-left: 62%;
-filter: drop-shadow(5px 5px 5px #2a631b);}
+  position: absolute;
+  margin-top: 145px;
+  margin-left: 62%;
+  filter: drop-shadow(5px 5px 5px #2a631b);
+  
+}
 
 #lupa {
   border: none;
-  background: none;
-  margin-right: 15px ;
-  cursor: pointer;
-
+  margin-left:40px;
+  bottom:10px;
+  height: 110px;
+  width: 130px;
+  
 }
 
 /* Estilos para la imagen dentro del botón */
 #lupa img {
   width: 80px; /* Ajusta el tamaño de la imagen según tus necesidades */
   height: 80px;
+  
+  
 }
-#lupa:hover img{
+#lupa:hover img {
   width: 74px; /* Ajusta el tamaño de la imagen según tus necesidades */
   height: 74px;
 }
